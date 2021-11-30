@@ -6,15 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ThirdView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.ThirdController">
+<AnchorPane id="AnchorPane" fx:id="ThirdView" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.ThirdController">
    <children>
-      <Button fx:id="BackToPrimary" layoutX="430.0" layoutY="336.0" mnemonicParsing="false" onAction="#BackToPrimary" text="Tilbage" />
-      <Button layoutX="276.0" layoutY="256.0" mnemonicParsing="false" text="Login" />
-      <TextField layoutX="220.0" layoutY="173.0" promptText="Username" />
-      <TextField layoutX="220.0" layoutY="212.0" promptText="Password" />
-      <Text layoutX="240.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som Lærer">
+      <Button fx:id="BackToPrimary" layoutX="640.0" layoutY="520" mnemonicParsing="false" onAction="#BackToPrimary" text="Tilbage" />
+      <Button layoutX="447.0" layoutY="354.0" mnemonicParsing="false" text="Login" />
+       <TextField layoutX="335.0" layoutY="266.0" promptText="Username" />
+      <TextField layoutX="335.0" layoutY="302.0" promptText="Password" />
+       <Text layoutX="337.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som Lærer">
          <font>
-            <Font size="17.0" />
+             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Text>
    </children>
