@@ -25,5 +25,10 @@ public class Secondary2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+@FXML
+    private void switchToPrimary() throws IOException {
+        App.setRoot("primary");
+    }
     
 }
