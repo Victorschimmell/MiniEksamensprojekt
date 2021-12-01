@@ -13,4 +13,10 @@ public class SecondaryController {
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
+   
+         @FXML
+    private void switchToSvarView() throws IOException {
+        App.setRoot("secondary2");
+    }
+    
 }
