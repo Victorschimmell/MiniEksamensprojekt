@@ -11,7 +11,7 @@
       <Button fx:id="SecondaryView" layoutX="640.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Tilbage" />
       <Button layoutX="447.0" layoutY="354.0" mnemonicParsing="false" text="Login" />
       <TextField layoutX="335.0" layoutY="266.0" promptText="Username" />
-      <TextField layoutX="335.0" layoutY="302.0" promptText="Password" />
+      <TextField accessibleRole="PASSWORD_FIELD" layoutX="335.0" layoutY="302.0" promptText="Password" />
       <Text layoutX="311.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som prøvetager">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
