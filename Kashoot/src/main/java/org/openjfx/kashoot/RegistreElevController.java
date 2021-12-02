@@ -16,7 +16,7 @@ import javafx.fxml.Initializable;
  *
  * @author edwardrostomian
  */
-public class ThirdController implements Initializable {
+public class RegistreElevController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -25,13 +25,9 @@ public class ThirdController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+      @FXML
+    private void switchToSecondary() throws IOException {
+        App.setRoot("secondary");
+    }
     
-    @FXML
-    private void BackToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
-        @FXML
-    private void switchToRegistreLærer() throws IOException {
-        App.setRoot("RegistreLærer");
-    }
 }

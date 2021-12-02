@@ -18,5 +18,9 @@ public class SecondaryController {
     private void switchToSvarView() throws IOException {
         App.setRoot("secondary2");
     }
-    
+         @FXML
+    private void switchToRegistreElev() throws IOException {
+        App.setRoot("RegistreElev");
+    }
 }
+    

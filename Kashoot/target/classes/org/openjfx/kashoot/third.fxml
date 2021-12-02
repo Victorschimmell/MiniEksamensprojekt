@@ -17,5 +17,11 @@
              <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Text>
+      <Button layoutX="335.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchToRegistreLærer" text="Opret" />
+      <Text layoutX="258.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intet login? Opret bruger:" wrappingWidth="78.7099609375">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
