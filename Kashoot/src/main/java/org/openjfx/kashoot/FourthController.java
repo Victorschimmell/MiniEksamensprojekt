@@ -5,10 +5,8 @@
  */
 package org.openjfx.kashoot;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author edwardrostomian
  */
-public class Secondary2Controller implements Initializable {
+public class FourthController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -25,10 +23,5 @@ public class Secondary2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-@FXML
-    private void switchToFourth() throws IOException {
-        App.setRoot("fourth");
-    }
     
 }
