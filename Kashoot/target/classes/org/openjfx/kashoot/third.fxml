@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ThirdView" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.ThirdController">
+<AnchorPane id="AnchorPane" fx:id="ThirdView" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-      <Button fx:id="BackToPrimary" layoutX="640.0" layoutY="520" mnemonicParsing="false" onAction="#BackToPrimary" text="Tilbage" />
-      <Button layoutX="447.0" layoutY="354.0" mnemonicParsing="false" text="Login" />
-       <TextField layoutX="335.0" layoutY="266.0" promptText="Username" />
-      <TextField accessibleRole="PASSWORD_FIELD" layoutX="335.0" layoutY="302.0" promptText="Password" />
+      <Button fx:id="BackToPrimary" layoutX="640.0" layoutY="520" mnemonicParsing="false" onAction="#switchToPrimary" text="Tilbage" />
+      <Button layoutX="447.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleBtnLogin" text="Login" />
+       <TextField fx:id="txtLog2Username" layoutX="335.0" layoutY="266.0" promptText="Username" />
+      <TextField fx:id="txtLog2Password" accessibleRole="PASSWORD_FIELD" layoutX="335.0" layoutY="302.0" promptText="Password" />
        <Text layoutX="337.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som Lærer">
          <font>
              <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Text>
-      <Button layoutX="335.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchToRegistreLærer" text="Opret" />
+      <Button fx:id="SecondaryView" layoutX="335.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchToRegistreLærer" text="Opret" />
       <Text layoutX="258.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intet login? Opret bruger:" wrappingWidth="78.7099609375">
          <font>
             <Font size="12.0" />
          </font>
       </Text>
+      <Label fx:id="verifyLogin" layoutX="311.0" layoutY="406.0" prefHeight="44.0" prefWidth="212.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>
