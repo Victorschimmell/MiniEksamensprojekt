@@ -107,11 +107,15 @@ public class PrimaryController implements Initializable {
             if ((!txtUsername1.getText().isBlank() && !txtPassword1.getText().isBlank())) {
                 DB.saveUser(new User(-1, txtUsername1.getText(), txtPassword1.getText()));
                 UserConfirm.setText(DB.cMessage);
+                App.setRoot("secondary");
+                DB.pNumber = 3;
             }
         } else if (DB.pNumber == 2) {
             if ((!txtUsername2.getText().isBlank() && !txtPassword2.getText().isBlank())) {
                 DB.saveUser(new User(-1, txtUsername2.getText(), txtPassword2.getText()));
                 UserConfirm.setText(DB.cMessage);
+                App.setRoot("third");
+                DB.pNumber = 4;
             }
 
         } else {
