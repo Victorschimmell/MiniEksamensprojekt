@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
+import javafx.scene.control.CheckBox;
 
 public class PrimaryController implements Initializable {
 
@@ -38,6 +39,22 @@ public class PrimaryController implements Initializable {
     private ListView SpørgsmålList;
     @FXML
     private TextArea IndskrivSpm;
+    @FXML
+    private TextField SvarmulighedA;
+    @FXML
+    private TextField SvarmulighedB;
+    @FXML
+    private TextField SvarmulighedC;
+    @FXML
+    private TextField SvarmulighedD;
+    @FXML
+    private CheckBox AKorrekt;
+    @FXML
+    private CheckBox BKorrekt;
+    @FXML
+    private CheckBox CKorrekt;
+    @FXML
+    private CheckBox DKorrekt;
 
     int x = 1;
 
@@ -174,9 +191,13 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void IndsetSpm() throws IOException {
+    private void IndsætSpm() throws IOException {
 
-        SpørgsmålList.getItems().add(IndskrivSpm.getText());
+        SpørgsmålList.getItems().add("Spørgsmål: " + IndskrivSpm.getText() +
+                ", Svarmulighed A: " + SvarmulighedA.getText() + ":" + AKorrekt.isSelected() +
+                ", Svarmulighed B: " + SvarmulighedB.getText() + ":" + BKorrekt.isSelected() +
+                ", Svarmulighed C: " + SvarmulighedC.getText() + ":" + CKorrekt.isSelected() +
+                ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
 
     }
 
