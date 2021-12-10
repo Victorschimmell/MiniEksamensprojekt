@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 
 public class PrimaryController implements Initializable {
@@ -33,6 +34,10 @@ public class PrimaryController implements Initializable {
     private TextField txtLog2Password;
     @FXML
     private ListView OpgaveList;
+    @FXML
+    private ListView SpørgsmålList;
+    @FXML
+    private TextArea IndskrivSpm;
 
     int x = 1;
 
@@ -95,7 +100,7 @@ public class PrimaryController implements Initializable {
         App.setRoot("RegistreLærer");
 
     }
-    
+
     @FXML
     private void switchToFourth() throws IOException {
         App.setRoot("fourth");
@@ -144,7 +149,7 @@ public class PrimaryController implements Initializable {
                     verifyLogin.setText("Successful login");
                     System.out.println("Successful login");
                     // Lærer kommandoer her
-                    App.setRoot("LærerOpretSpm");
+                    App.setRoot("LærerQuizMenu");
                 } else {
                     verifyLogin.setText("Username or password are incorrect");
                 }
@@ -162,8 +167,16 @@ public class PrimaryController implements Initializable {
 
         // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
         // SQLITE
-        OpgaveList.getItems().add(x);
-        x++;
+        // OpgaveList.getItems().add(x);
+        // x++;
+        App.setRoot("LærerOpretSpm");
+
+    }
+
+    @FXML
+    private void IndsetSpm() throws IOException {
+
+        SpørgsmålList.getItems().add(IndskrivSpm.getText());
 
     }
 
