@@ -12,9 +12,9 @@
 <children>
       <TextField fx:id="txtUsername2" layoutX="320.0" layoutY="231.0" promptText="Username" />
       <PasswordField fx:id="txtPassword2" layoutX="320.0" layoutY="273.0" promptText="Password" />
-      <Button layoutX="369.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registre" />
+      <Button layoutX="369.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registrer" />
      
-      <Button layoutX="74.0" layoutY="64.0" mnemonicParsing="false" onAction="#switchToThird" text="Gå tilage" />
+      <Button layoutX="74.0" layoutY="64.0" mnemonicParsing="false" onAction="#switchToThird" text="Gå tilbage" />
       <Text layoutX="342.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
          <font>
             <Font size="17.0" />
