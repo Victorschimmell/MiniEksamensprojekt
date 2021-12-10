@@ -12,13 +12,13 @@
    <children>
       <TextField fx:id="txtUsername1" layoutX="320.0" layoutY="231.0" promptText="Username" />
       <PasswordField fx:id="txtPassword1" layoutX="320.0" layoutY="273.0" promptText="Password" />
-      <Button fx:id="REGACC" layoutX="369.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registre" />
+      <Button fx:id="REGACC" layoutX="369.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registrer" />
       <Text layoutX="340.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Button layoutX="74.0" layoutY="64.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Gå tilage" />
+      <Button layoutX="74.0" layoutY="64.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Gå tilbage" />
       <Text layoutX="29.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Når du har registreret bruger:" />
       <Label fx:id="UserConfirm" layoutX="320.0" layoutY="376.0" prefHeight="39.0" prefWidth="149.0" />
    </children>
