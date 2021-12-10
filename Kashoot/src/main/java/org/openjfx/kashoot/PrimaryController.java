@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
 
 public class PrimaryController implements Initializable {
 
@@ -30,6 +31,10 @@ public class PrimaryController implements Initializable {
     private TextField txtLog2Username;
     @FXML
     private TextField txtLog2Password;
+    @FXML
+    private ListView OpgaveList;
+
+    int x = 1;
 
     @FXML
     private Label UserConfirm;
@@ -137,7 +142,9 @@ public class PrimaryController implements Initializable {
             } else if (DB.pNumber == 4) {
                 if (DB.verifyLogin(txtLog2Username.getText(), txtLog2Password.getText())) {
                     verifyLogin.setText("Successful login");
+                    System.out.println("Successful login");
                     // Lærer kommandoer her
+                    App.setRoot("LærerOpretSpm");
                 } else {
                     verifyLogin.setText("Username or password are incorrect");
                 }
@@ -149,4 +156,15 @@ public class PrimaryController implements Initializable {
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+
+    @FXML
+    private void OpretQuiz() throws IOException {
+
+        // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
+        // SQLITE
+        OpgaveList.getItems().add(x);
+        x++;
+
+    }
+
 }

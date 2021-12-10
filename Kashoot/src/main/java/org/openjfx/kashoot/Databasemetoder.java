@@ -20,7 +20,7 @@ public class Databasemetoder {
     private final String connectionString = "jdbc:sqlite:src/kashootDB.db";
     public String cMessage;
     public String verifyLogin;
-    public int pNumber;
+    public static int pNumber;
 
     public void saveUser(User u) throws SQLException, Exception {
         Connection conn = null;
