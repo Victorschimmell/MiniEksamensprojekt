@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -23,12 +22,10 @@ public class PrimaryController implements Initializable {
     private TextField txtUsername2;
     @FXML
     private TextField txtPassword2;
-
     @FXML
     private TextField txtLog1Username;
     @FXML
     private TextField txtLog1Password;
-    
     @FXML
     private TextField txtLog2Username;
     @FXML
@@ -41,13 +38,13 @@ public class PrimaryController implements Initializable {
 
     Databasemetoder DB = new Databasemetoder();
 
-    //FXML
+    // FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }
 
-    //Funktioner til at skifte vindue inde på programmet
+    // Funktioner til at skifte vindue inde på programmet
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
@@ -126,12 +123,13 @@ public class PrimaryController implements Initializable {
     @FXML
     private void handleBtnLogin(ActionEvent event) throws IOException, Exception {
         try {
-            //Tjekker om boolean er TRUE i første if statement, hvis den ikke er sand, så eksisterer navnet ikke og den giver en besked
+            // Tjekker om boolean er TRUE i første if statement, hvis den ikke er sand, så
+            // eksisterer navnet ikke og den giver en besked
 
             if (DB.pNumber == 3) {
                 if (DB.verifyLogin(txtLog1Username.getText(), txtLog1Password.getText())) {
                     verifyLogin.setText("Successful login");
-                    //Andre elev ting her
+                    // Andre elev ting her
                 } else {
                     verifyLogin.setText("Username or password are incorrect");
                 }
@@ -139,7 +137,7 @@ public class PrimaryController implements Initializable {
             } else if (DB.pNumber == 4) {
                 if (DB.verifyLogin(txtLog2Username.getText(), txtLog2Password.getText())) {
                     verifyLogin.setText("Successful login");
-                    //Lærer kommandoer her
+                    // Lærer kommandoer her
                 } else {
                     verifyLogin.setText("Username or password are incorrect");
                 }
