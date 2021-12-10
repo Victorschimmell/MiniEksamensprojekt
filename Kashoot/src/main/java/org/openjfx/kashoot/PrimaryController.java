@@ -90,7 +90,7 @@ public class PrimaryController implements Initializable {
         App.setRoot("RegistreLærer");
 
     }
-
+    
     @FXML
     private void switchToFourth() throws IOException {
         App.setRoot("fourth");
