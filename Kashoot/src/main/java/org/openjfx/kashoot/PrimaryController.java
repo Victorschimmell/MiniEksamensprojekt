@@ -55,15 +55,15 @@ public class PrimaryController implements Initializable {
     private CheckBox CKorrekt;
     @FXML
     private CheckBox DKorrekt;
-
-    int x = 1;
-
     @FXML
     private Label UserConfirm;
     @FXML
     private Label verifyLogin;
 
     Databasemetoder DB = new Databasemetoder();
+    
+    //PLACEHOLDER FOR SQL KODE
+    int x = 1;
 
     // FXML
     @Override
@@ -184,8 +184,8 @@ public class PrimaryController implements Initializable {
 
         // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
         // SQLITE
-        // OpgaveList.getItems().add(x);
-        // x++;
+        OpgaveList.getItems().add(x);
+        x++;
         App.setRoot("LærerOpretSpm");
 
     }
