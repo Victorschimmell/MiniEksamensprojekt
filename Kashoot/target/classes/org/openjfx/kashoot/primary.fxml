@@ -27,7 +27,7 @@
          <font>
             <Font name="Avenir Book" size="15.0" />
          </font></Button>
-      <Text layoutX="370.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hvad er du?">
+      <Text layoutX="338.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vælg din bruger type?">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font></Text>

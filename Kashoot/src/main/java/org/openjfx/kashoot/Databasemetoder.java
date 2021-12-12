@@ -22,6 +22,8 @@ public class Databasemetoder {
     public String verifyLogin;
     public static int pNumber;
 
+    public static int CurrentUser;
+
     public void saveUser(User u) throws SQLException, Exception {
         Connection conn = null;
         Class.forName("org.sqlite.JDBC");
@@ -51,12 +53,14 @@ public class Databasemetoder {
 
         }
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             cMessage = "Username already exists";
 
+        } finally {
+            conn.close();
         }
 
     }
@@ -70,9 +74,9 @@ public class Databasemetoder {
         String query = null;
 
         if (pNumber == 3) {
-            query = "select * from elev where navn = ? and kode = ?";
+            query = "SELECT * FROM elev WHERE  navn = ? AND kode = ?";
         } else if (pNumber == 4) {
-            query = "select * from lærer where navn = ? and kode = ?";
+            query = "SELECT * FROM lærer WHERE  navn = ? AND kode = ?";
         }
 
         // Skab forbindelse til databasen...
@@ -95,7 +99,28 @@ public class Databasemetoder {
             // Tjekker hele databasen igennem om der eksisterer et navn og kode, hvis ikke
             // så returner den false
             if (rs.next()) {
+
+                if (pNumber == 3) {
+                    query = "SELECT ID FROM Elev WHERE  navn ='" + navn + "'";
+                } else if (pNumber == 4) {
+                    query = "SELECT ID FROM lærer WHERE  navn ='" + navn + "'";
+                }
+
+                try {
+
+                    preparedStatement = conn.prepareStatement(query);
+                    rs = preparedStatement.executeQuery();
+
+                    CurrentUser = rs.getInt("ID");
+                    System.out.println("Current user ID:    " + CurrentUser);
+
+                } catch (Exception e) {
+                    System.out.println(e + "\n" + "No Current user");
+
+                }
+
                 return true;
+
             } else {
                 return false;
             }
@@ -109,6 +134,41 @@ public class Databasemetoder {
         } finally {
             preparedStatement.close();
             rs.close();
+            conn.close();
         }
     }
+
+    public void newQuiz(Quiz q) throws SQLException, Exception {
+        Connection conn = null;
+        Class.forName("org.sqlite.JDBC");
+        String sql = null;
+
+        // Skab forbindelse til databasen...
+        try {
+            conn = DriverManager.getConnection(connectionString);
+        } catch (SQLException e) {
+            // Skriver fejlhåndtering her
+            System.out.println("DB Error: " + e.getMessage());
+        }
+
+        if (q.getquizName().isBlank()) {
+            System.out.println("No quizname written");
+
+        } else {
+            sql = "INSERT INTO Quiz(Navn,Lærer_ID) VALUES('" + q.getquizName() + "','" + q.getteacherID() + "');";
+
+        }
+        // Skab forbindelse til databasen...
+        try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+            System.out.println("Successfully created a new quiz");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+
+        } finally {
+            conn.close();
+        }
+
+    }
+
 }

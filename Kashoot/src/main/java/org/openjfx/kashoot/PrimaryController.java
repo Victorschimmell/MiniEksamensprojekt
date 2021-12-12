@@ -48,6 +48,8 @@ public class PrimaryController implements Initializable {
     @FXML
     private TextField SvarmulighedD;
     @FXML
+    private TextField quiznavn;
+    @FXML
     private CheckBox AKorrekt;
     @FXML
     private CheckBox BKorrekt;
@@ -63,7 +65,6 @@ public class PrimaryController implements Initializable {
     Databasemetoder DB = new Databasemetoder();
     
     //PLACEHOLDER FOR SQL KODE
-    int x = 1;
 
     // FXML
     @Override
@@ -180,14 +181,21 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void OpretQuiz() throws IOException {
+    private void OpretQuiz() throws IOException, Exception {
 
         // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
         // SQLITE
-        OpgaveList.getItems().add(x);
-        x++;
-        App.setRoot("LærerOpretSpm");
+        OpgaveList.getItems().add(quiznavn.getText());
+        
+        DB.newQuiz(new Quiz(-1, quiznavn.getText(), DB.CurrentUser ));
+        
+        //App.setRoot("LærerOpretSpm");
 
+    }
+    @FXML
+    //Tilbage fra spmmenu til quizmenu
+    private void Tilbage()throws IOException{
+        App.setRoot("lærerQuizMenu");
     }
 
     @FXML
