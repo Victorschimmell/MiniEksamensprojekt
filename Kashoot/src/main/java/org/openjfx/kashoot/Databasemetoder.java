@@ -53,7 +53,7 @@ public class Databasemetoder {
 
         }
 
-        try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -117,6 +117,9 @@ public class Databasemetoder {
                 } catch (Exception e) {
                     System.out.println(e + "\n" + "No Current user");
 
+                } finally {
+                    preparedStatement.close();
+                    rs.close();
                 }
 
                 return true;
@@ -140,7 +143,6 @@ public class Databasemetoder {
 
     public void newQuiz(Quiz q) throws SQLException, Exception {
         Connection conn = null;
-        Class.forName("org.sqlite.JDBC");
         String sql = null;
 
         // Skab forbindelse til databasen...
@@ -159,7 +161,7 @@ public class Databasemetoder {
 
         }
         // Skab forbindelse til databasen...
-        try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
             System.out.println("Successfully created a new quiz");
         } catch (SQLException e) {
