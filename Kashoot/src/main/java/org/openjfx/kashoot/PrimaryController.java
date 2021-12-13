@@ -188,7 +188,7 @@ public class PrimaryController implements Initializable {
         // SQLITE
         OpgaveList.getItems().add(quiznavn.getText());
 
-        DB.newQuiz(new Quiz(-1, quiznavn.getText(), DB.CurrentUser));
+        DB.newQuiz(new Quiz(quiznavn.getText(), DB.CurrentUser));
 
         // App.setRoot("LærerOpretSpm");
 

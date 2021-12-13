@@ -11,7 +11,6 @@ package org.openjfx.kashoot;
  */
 public class Quiz {
 
-    private int idQuiz;
     private String quizName;
     private int teacherID;
 
@@ -20,20 +19,9 @@ public class Quiz {
      * {}
      */
 
-    public Quiz(int _idQuiz, String _quizName, int _teacherID) {
-        idQuiz = _idQuiz;
+    public Quiz( String _quizName, int _teacherID) {
         quizName = _quizName;
         teacherID = _teacherID;
-    }
-
-    // Getter and setter
-
-    public int getIdQuiz() {
-        return idQuiz;
-    }
-
-    public void setIdQuiz(int _idQuiz) {
-        this.idQuiz = _idQuiz;
     }
 
     public String getquizName() {
