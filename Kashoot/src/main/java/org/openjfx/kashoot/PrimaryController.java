@@ -63,8 +63,8 @@ public class PrimaryController implements Initializable {
     private Label verifyLogin;
 
     Databasemetoder DB = new Databasemetoder();
-    
-    //PLACEHOLDER FOR SQL KODE
+
+    // PLACEHOLDER FOR SQL KODE
 
     // FXML
     @Override
@@ -157,6 +157,7 @@ public class PrimaryController implements Initializable {
             if (DB.pNumber == 3) {
                 if (DB.verifyLogin(txtLog1Username.getText(), txtLog1Password.getText())) {
                     verifyLogin.setText("Successful login");
+                    App.setRoot("spmSide");
                     // Andre elev ting her
                 } else {
                     verifyLogin.setText("Username or password are incorrect");
@@ -186,15 +187,16 @@ public class PrimaryController implements Initializable {
         // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
         // SQLITE
         OpgaveList.getItems().add(quiznavn.getText());
-        
-        DB.newQuiz(new Quiz(-1, quiznavn.getText(), DB.CurrentUser ));
-        
-        //App.setRoot("LærerOpretSpm");
+
+        DB.newQuiz(new Quiz(-1, quiznavn.getText(), DB.CurrentUser));
+
+        // App.setRoot("LærerOpretSpm");
 
     }
+
     @FXML
-    //Tilbage fra spmmenu til quizmenu
-    private void Tilbage()throws IOException{
+    // Tilbage fra spmmenu til quizmenu
+    private void Tilbage() throws IOException {
         App.setRoot("lærerQuizMenu");
     }
 
