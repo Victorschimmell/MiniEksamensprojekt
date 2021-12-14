@@ -15,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.CheckBox;
 
+
 public class PrimaryController implements Initializable {
 
     @FXML
@@ -210,5 +211,5 @@ public class PrimaryController implements Initializable {
                 ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
 
     }
-
+   
 }
