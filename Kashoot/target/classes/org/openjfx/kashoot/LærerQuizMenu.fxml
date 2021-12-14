@@ -9,6 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
+      <TextField fx:id="quiznavn" layoutX="63.0" layoutY="99.0" prefHeight="25.0" prefWidth="251.0" promptText="Indskriv quiznavn... og opret ny quiz" />
       <Button fx:id="OpretQuiz" layoutX="63.0" layoutY="137.0" mnemonicParsing="false" onAction="#OpretQuiz" prefHeight="31.0" prefWidth="251.0" text="Opret ny opgave">
          <font>
             <Font name="Avenir Book" size="15.0" />
@@ -24,11 +25,5 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="quiznavn" layoutX="63.0" layoutY="99.0" prefHeight="25.0" prefWidth="251.0" promptText="Indskriv quiznavn... og opret ny quiz" />
-      <Button fx:id="update" layoutX="63.0" layoutY="181.0" mnemonicParsing="false" onAction="#updateQuiz" prefHeight="31.0" prefWidth="251.0" text="Update">
-         <font>
-            <Font name="Avenir Book" size="15.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

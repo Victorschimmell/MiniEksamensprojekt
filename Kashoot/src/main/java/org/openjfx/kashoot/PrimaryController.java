@@ -75,6 +75,11 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        try {
+            updateQuiz();
+        } catch (Exception e) {
+        }
+
     }
 
     // Funktioner til at skifte vindue inde på programmet
@@ -203,6 +208,7 @@ public class PrimaryController implements Initializable {
     @FXML
     // Tilbage fra spmmenu til quizmenu
     private void Tilbage() throws IOException {
+
         App.setRoot("lærerQuizMenu");
     }
 
@@ -221,6 +227,12 @@ public class PrimaryController implements Initializable {
     private void updateQuiz() throws Exception {
 
         ArrayList<String> Names = new ArrayList<String>(DB.updateQuizTabel());
+
+        try {
+            OpgaveList.getItems().clear();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
 
         for (int i = 0; i < Names.size(); i++) {
 
