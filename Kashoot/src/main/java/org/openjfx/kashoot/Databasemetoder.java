@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -141,6 +143,38 @@ public class Databasemetoder {
         }
     }
 
+    public ArrayList<String> updateQuizTabel() throws SQLException, Exception {
+        ArrayList<String> Names = new ArrayList<String>();
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = DriverManager.getConnection(connectionString);
+
+            ps = conn.prepareStatement("SELECT Navn FROM Quiz WHERE Lærer_ID ='" + CurrentUser + "'");
+            rs = ps.executeQuery();
+
+            try {
+                while (rs.next()) {
+
+                    Names.add(rs.getString("navn"));
+
+                }
+               // System.out.println(Names.toString());
+
+            } catch (Exception e) {
+                System.out.println("Fejl 2" + e);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Fejl 1" + e);
+        }
+
+        return Names;
+    }
+
     public void newQuiz(Quiz q) throws SQLException, Exception {
         Connection conn = null;
         String sql = null;
@@ -172,6 +206,5 @@ public class Databasemetoder {
         }
 
     }
-    
 
 }
