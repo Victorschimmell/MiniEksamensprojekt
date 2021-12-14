@@ -221,9 +221,12 @@ public class PrimaryController implements Initializable {
     private void updateQuiz() throws Exception {
 
         ArrayList<String> Names = new ArrayList<String>(DB.updateQuizTabel());
-        System.out.println(Names);
 
-        
+        for (int i = 0; i < Names.size(); i++) {
+
+            OpgaveList.getItems().add(Names.get(i));
+
+        }
 
     }
 
