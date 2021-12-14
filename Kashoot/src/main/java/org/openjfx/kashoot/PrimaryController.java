@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,9 +39,9 @@ public class PrimaryController implements Initializable {
     @FXML
     private TextField txtLog2Password;
     @FXML
-    private ListView OpgaveList;
+    private ListView<String> OpgaveList;
     @FXML
-    private ListView SpørgsmålList;
+    private ListView<String> SpørgsmålList;
     @FXML
     private TextArea IndskrivSpm;
     @FXML
@@ -217,10 +220,10 @@ public class PrimaryController implements Initializable {
     @FXML
     private void updateQuiz() throws Exception {
 
-        ArrayList<String> Names = new ArrayList<String>();
-        Names = DB.updateQuizTabel();
+        ArrayList<String> Names = new ArrayList<String>(DB.updateQuizTabel());
+        System.out.println(Names);
 
-        // OpgaveList = new Arraylist<String>(Names);
+        
 
     }
 

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author peter
@@ -161,7 +162,7 @@ public class Databasemetoder {
                     Names.add(rs.getString("navn"));
 
                 }
-                System.out.println(Names.toString());
+               // System.out.println(Names.toString());
 
             } catch (Exception e) {
                 System.out.println("Fejl 2" + e);
