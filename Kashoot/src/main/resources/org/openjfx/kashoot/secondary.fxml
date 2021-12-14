@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
       <Button layoutX="640.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Tilbage" />
-      <Button layoutX="516.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="27.0" prefWidth="159.0" text="Login" />
+      <Button layoutX="516.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="33.0" prefWidth="158.0" text="Login" />
       <TextField fx:id="txtLog1Username" layoutX="516.0" layoutY="264.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="txtLog1Password" accessibleRole="PASSWORD_FIELD" layoutX="516.0" layoutY="311.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <Text layoutX="497.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som prøvetager">
@@ -21,18 +22,16 @@
       <Label fx:id="verifyLogin" layoutX="440.0" layoutY="413.0" prefHeight="43.0" prefWidth="312.0" textAlignment="CENTER" />
       <AnchorPane layoutX="-7.0" layoutY="-6.0" prefHeight="607.0" prefWidth="356.0" style="-fx-background-color: #0598ff;">
          <children>
-            <Button layoutX="104.0" layoutY="374.0" mnemonicParsing="false" onAction="#switchToRegistreElev" prefHeight="27.0" prefWidth="150.0" text="Opret" />
-            <Text fill="WHITE" layoutX="99.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingen bruger?">
+            <Button layoutX="100.0" layoutY="367.0" mnemonicParsing="false" onAction="#switchToRegistreElev" prefHeight="33.0" prefWidth="152.0" text="Opret bruger" />
+            <Text fill="WHITE" layoutX="96.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingen bruger?">
                <font>
                   <Font name="Avenir Book" size="25.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="142.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registre:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
+            <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="148.0" layoutY="274.0" size="50" />
          </children>
       </AnchorPane>
+      <FontAwesomeIconView fill="#000000a9" glyphName="USER" layoutX="494.0" layoutY="287.0" size="18" wrappingWidth="14.67028576158043" />
+      <FontAwesomeIconView fill="#0000009c" glyphName="KEY" layoutX="494.0" layoutY="335.0" size="18" wrappingWidth="10.886708835319723" />
    </children>
 </AnchorPane>

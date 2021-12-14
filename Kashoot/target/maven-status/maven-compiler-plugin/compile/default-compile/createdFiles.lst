@@ -1,6 +1,7 @@
-org\openjfx\kashoot\User.class
-org\openjfx\kashoot\Quiz.class
+org/openjfx/kashoot/Databasemetoder.class
+org/openjfx/kashoot/spm.class
+org/openjfx/kashoot/User.class
+org/openjfx/kashoot/PrimaryController.class
+org/openjfx/kashoot/Quiz.class
 module-info.class
-org\openjfx\kashoot\App.class
-org\openjfx\kashoot\Databasemetoder.class
-org\openjfx\kashoot\PrimaryController.class
+org/openjfx/kashoot/App.class
