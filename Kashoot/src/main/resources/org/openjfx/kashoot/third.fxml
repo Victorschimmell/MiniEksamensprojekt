@@ -11,7 +11,7 @@
    <children>
        <TextField fx:id="txtLog2Username" layoutX="516.0" layoutY="264.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #008080#008080 #008080#008080; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="txtLog2Password" accessibleRole="PASSWORD_FIELD" layoutX="516.0" layoutY="312.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #008080#008080 #008080#008080; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="27.0" prefWidth="159.0" text="Login" />
+      <Button layoutX="505.0" layoutY="379.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="27.0" prefWidth="171.0" text="Login" />
        <Text layoutX="519.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som Lærer">
          <font>
              <Font name="Comic Sans MS" size="20.0" />
@@ -20,7 +20,7 @@
       <Label fx:id="verifyLogin" layoutX="525.0" layoutY="407.0" prefHeight="44.0" prefWidth="212.0" textAlignment="CENTER" />
       <AnchorPane prefHeight="607.0" prefWidth="356.0" style="-fx-background-color: #008080#008080;">
          <children>
-            <Button fx:id="SecondaryView" layoutX="103.0" layoutY="368.0" mnemonicParsing="false" onAction="#switchToRegistreLærer" prefHeight="27.0" prefWidth="150.0" text="Opret" />
+            <Button fx:id="SecondaryView" layoutX="104.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchToRegistreLærer" prefHeight="27.0" prefWidth="150.0" text="Opret" />
             <Text fill="WHITE" layoutX="141.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registre:">
                <font>
                   <Font size="20.0" />
