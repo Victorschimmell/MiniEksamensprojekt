@@ -3,9 +3,11 @@ package org.openjfx.kashoot;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -168,6 +170,7 @@ public class PrimaryController implements Initializable {
                     verifyLogin.setText("Successful login");
                     System.out.println("Successful login");
                     // Lærer kommandoer her
+                    DB.updateQuizTabel();
                     App.setRoot("LærerQuizMenu");
                 } else {
                     verifyLogin.setText("Username or password are incorrect");
@@ -190,7 +193,7 @@ public class PrimaryController implements Initializable {
 
         DB.newQuiz(new Quiz(quiznavn.getText(), DB.CurrentUser));
 
-        // App.setRoot("LærerOpretSpm");
+        App.setRoot("LærerOpretSpm");
 
     }
 
@@ -208,6 +211,16 @@ public class PrimaryController implements Initializable {
                 ", Svarmulighed B: " + SvarmulighedB.getText() + ":" + BKorrekt.isSelected() +
                 ", Svarmulighed C: " + SvarmulighedC.getText() + ":" + CKorrekt.isSelected() +
                 ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
+
+    }
+
+    @FXML
+    private void updateQuiz() throws Exception {
+
+        ArrayList<String> Names = new ArrayList<String>();
+        Names = DB.updateQuizTabel();
+
+        // OpgaveList = new Arraylist<String>(Names);
 
     }
 
