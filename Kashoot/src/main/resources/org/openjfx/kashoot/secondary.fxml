@@ -13,6 +13,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
       <TextField fx:id="txtLog1Username" layoutX="516.0" layoutY="264.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="txtLog1Password" layoutX="516.0" layoutY="314.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: #0598ff #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <Button layoutX="512.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="33.0" prefWidth="158.0" text="Log ind" />
       <Text layoutX="482.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log ind som prøvetager">
          <font>
@@ -46,6 +47,5 @@
             <Image url="@Icons/LoginKey.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="txtLog1Password" layoutX="516.0" layoutY="314.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: #0598ff #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
    </children>
 </AnchorPane>

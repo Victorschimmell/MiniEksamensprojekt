@@ -13,6 +13,7 @@
 <AnchorPane id="AnchorPane" fx:id="ThirdView" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
        <TextField fx:id="txtLog2Username" layoutX="516.0" layoutY="265.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: #008080#008080 #008080#008080; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="txtLog2Password" layoutX="516.0" layoutY="314.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
       <Button layoutX="505.0" layoutY="379.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="27.0" prefWidth="171.0" text="Log ind" />
        <Text layoutX="504.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log ind som Lærer">
          <font>
@@ -46,6 +47,5 @@
             <Image url="@Icons/LoginKey.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="txtLog2Password" layoutX="516.0" layoutY="314.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
    </children>
 </AnchorPane>
