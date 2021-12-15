@@ -110,6 +110,11 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
+    private void switchToSpm() throws IOException {
+        App.setRoot("spmSide");
+    }
+
+    @FXML
     private void switchToRegistreElev() throws IOException {
 
         DB.pNumber = 1;
@@ -167,7 +172,7 @@ public class PrimaryController implements Initializable {
             if (DB.pNumber == 3) {
                 if (DB.verifyLogin(txtLog1Username.getText(), txtLog1Password.getText())) {
                     verifyLogin.setText("Successful login");
-                    App.setRoot("spmSide");
+                    App.setRoot("spmID");
                     // Andre elev ting her
                 } else {
                     verifyLogin.setText("Brugernavn eller kodeord er forkert");
