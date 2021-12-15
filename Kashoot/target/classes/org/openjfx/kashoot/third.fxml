@@ -19,7 +19,7 @@
              <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Text>
-      <Label fx:id="verifyLogin" layoutX="502.0" layoutY="421.0" prefHeight="44.0" prefWidth="212.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="verifyLogin" layoutX="496.0" layoutY="421.0" prefHeight="44.0" prefWidth="212.0" textAlignment="CENTER" textFill="RED" />
       <AnchorPane prefHeight="607.0" prefWidth="356.0" style="-fx-background-color: #008080#008080;">
          <children>
             <Button fx:id="SecondaryView" layoutX="103.0" layoutY="363.0" mnemonicParsing="false" onAction="#switchToRegistreLærer" prefHeight="27.0" prefWidth="150.0" text="Opret bruger" />
