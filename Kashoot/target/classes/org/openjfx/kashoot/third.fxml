@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,8 +12,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="ThirdView" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-       <TextField fx:id="txtLog2Username" layoutX="516.0" layoutY="264.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #008080#008080 #008080#008080; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="txtLog2Password" accessibleRole="PASSWORD_FIELD" layoutX="516.0" layoutY="312.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #008080#008080 #008080#008080; -fx-border-width: 0px 0px 2px 0px;" />
+       <TextField fx:id="txtLog2Username" layoutX="516.0" layoutY="265.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #008080#008080 #008080#008080; -fx-border-width: 0px 0px 2px 0px;" />
       <Button layoutX="505.0" layoutY="379.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="27.0" prefWidth="171.0" text="Login" />
        <Text layoutX="519.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som Lærer">
          <font>
@@ -41,10 +41,11 @@
             <Image url="@Icons/User.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="492.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="490.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Icons/LoginKey.png" />
          </image>
       </ImageView>
+      <PasswordField fx:id="txtLog2Password" layoutX="516.0" layoutY="314.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
    </children>
 </AnchorPane>
