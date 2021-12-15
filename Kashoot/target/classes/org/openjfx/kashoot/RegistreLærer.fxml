@@ -4,24 +4,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
 <children>
-      <TextField fx:id="txtUsername2" layoutX="320.0" layoutY="231.0" promptText="Username" />
-      <PasswordField fx:id="txtPassword2" layoutX="320.0" layoutY="273.0" promptText="Password" />
-      <Button layoutX="369.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registrer" />
+      <AnchorPane layoutY="-1.0" prefHeight="603.0" prefWidth="356.0" style="-fx-background-color: #008080#008080 #008080#008080;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="102.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Icons/User.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="txtUsername2" layoutX="501.0" layoutY="238.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword2" layoutX="501.0" layoutY="281.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <Button layoutX="547.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registrer" />
      
       <Button layoutX="74.0" layoutY="64.0" mnemonicParsing="false" onAction="#switchToThird" text="Gå tilbage" />
-      <Text layoutX="342.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
+      <Text layoutX="510.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
          <font>
-            <Font size="17.0" />
+            <Font size="20.0" />
          </font>
       </Text>
       <Text layoutX="29.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Når du har registreret bruger:" />
-      <Label fx:id="UserConfirm" layoutX="313.0" layoutY="362.0" prefHeight="35.0" prefWidth="184.0" />
+      <Label fx:id="UserConfirm" layoutX="489.0" layoutY="368.0" prefHeight="35.0" prefWidth="184.0" />
       
    </children>
 </AnchorPane>

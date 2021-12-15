@@ -4,22 +4,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-      <TextField fx:id="txtUsername1" layoutX="320.0" layoutY="231.0" promptText="Username" />
-      <PasswordField fx:id="txtPassword1" layoutX="320.0" layoutY="273.0" promptText="Password" />
-      <Button fx:id="REGACC" layoutX="369.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registrer" />
-      <Button layoutX="74.0" layoutY="64.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Gå tilbage" />
-      <Text layoutX="340.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
+      <AnchorPane layoutX="-7.0" layoutY="-6.0" prefHeight="607.0" prefWidth="356.0" style="-fx-background-color: #0598ff #0598ff;">
+         <children>
+            <Button layoutX="37.0" layoutY="95.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Gå tilbage" />
+            <Text layoutX="40.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Når du har registreret bruger:" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="102.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Icons/User.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="txtUsername1" layoutX="505.0" layoutY="254.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword1" layoutX="504.0" layoutY="302.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <Button fx:id="REGACC" layoutX="546.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Registrer" />
+      <Text layoutX="504.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
          <font>
-            <Font size="17.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="29.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Når du har registreret bruger:" />
-      <Label fx:id="UserConfirm" layoutX="320.0" layoutY="376.0" prefHeight="39.0" prefWidth="149.0" />
+      <Label fx:id="UserConfirm" layoutX="506.0" layoutY="398.0" prefHeight="39.0" prefWidth="149.0" />
    </children>
 </AnchorPane>
