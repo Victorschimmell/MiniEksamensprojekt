@@ -10,16 +10,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-      <TextField fx:id="txtLog1Username" layoutX="516.0" layoutY="264.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button layoutX="516.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="33.0" prefWidth="158.0" text="Login" />
-      <Text layoutX="497.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login som prøvetager">
+      <TextField fx:id="txtLog1Username" layoutX="516.0" layoutY="264.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button layoutX="512.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="33.0" prefWidth="158.0" text="Log ind" />
+      <Text layoutX="482.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log ind som prøvetager">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Text>
-      <Label fx:id="verifyLogin" layoutX="477.0" layoutY="412.0" prefHeight="43.0" prefWidth="238.0" textAlignment="CENTER" />
+      <Label fx:id="verifyLogin" layoutX="477.0" layoutY="412.0" prefHeight="43.0" prefWidth="238.0" textAlignment="CENTER" textFill="RED" />
       <AnchorPane layoutX="-7.0" layoutY="-6.0" prefHeight="607.0" prefWidth="356.0" style="-fx-background-color: #0598ff;">
          <children>
             <Button layoutX="100.0" layoutY="351.0" mnemonicParsing="false" onAction="#switchToRegistreElev" prefHeight="33.0" prefWidth="152.0" text="Opret bruger" />
@@ -46,6 +46,6 @@
             <Image url="@Icons/LoginKey.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="txtLog1Password" layoutX="516.0" layoutY="314.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="txtLog1Password" layoutX="516.0" layoutY="314.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: #0598ff #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
    </children>
 </AnchorPane>

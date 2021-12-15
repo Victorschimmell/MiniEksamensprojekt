@@ -170,7 +170,7 @@ public class PrimaryController implements Initializable {
                     App.setRoot("spmSide");
                     // Andre elev ting her
                 } else {
-                    verifyLogin.setText("Username or password are incorrect");
+                    verifyLogin.setText("Brugernavn eller kodeord er forkert");
                 }
 
             } else if (DB.pNumber == 4) {
@@ -181,7 +181,7 @@ public class PrimaryController implements Initializable {
                     DB.updateQuizTabel();
                     App.setRoot("LærerQuizMenu");
                 } else {
-                    verifyLogin.setText("Username or password are incorrect");
+                    verifyLogin.setText("Brugernavn eller kodeord er forkert");
                 }
 
             }
