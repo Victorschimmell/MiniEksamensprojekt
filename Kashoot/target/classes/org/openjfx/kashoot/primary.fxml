@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #27436B;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #27436B;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-      <Button fx:id="PrimaryView" layoutX="234.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="48.0" prefWidth="89.0" text="Elev">
+      <Button fx:id="PrimaryView" layoutX="70.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToSecondary" prefHeight="48.0" prefWidth="89.0" text="Elev">
          <font>
             <Font name="Avenir Book" size="15.0" />
          </font></Button>
@@ -19,7 +19,7 @@
             <Font name="Chalkboard SE Light" size="45.0" />
          </font>
       </Text>
-      <Button fx:id="ThirdView" layoutX="70.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="48.0" prefWidth="89.0" text="Lærer">
+      <Button fx:id="ThirdView" layoutX="234.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="48.0" prefWidth="89.0" text="Lærer">
          <font>
             <Font name="Avenir Book" size="15.0" />
          </font></Button>

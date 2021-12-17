@@ -20,7 +20,7 @@
             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Text>
-      <Label fx:id="verifyLogin" layoutX="509.0" layoutY="361.0" prefHeight="43.0" prefWidth="238.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="verifyLogin" layoutX="484.0" layoutY="379.0" prefHeight="43.0" prefWidth="238.0" textAlignment="CENTER" textFill="RED" />
       <AnchorPane layoutX="-7.0" layoutY="-6.0" prefHeight="607.0" prefWidth="356.0" style="-fx-background-color: #0598ff;">
          <children>
             <Button layoutX="100.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToRegistreElev" prefHeight="33.0" prefWidth="152.0" text="Opret bruger" />
