@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Databasemetoder {
 
     private final String connectionString = "jdbc:sqlite:src/kashootDB.db";
-    public String cMessage;
+    public static String cMessage;
     public String verifyLogin;
     public static int pNumber;
 
@@ -46,7 +46,9 @@ public class Databasemetoder {
             if (pNumber == 1) {
                 sql = "INSERT INTO Elev(Navn,Kode) VALUES('" + u.getUsername() + "','" + u.getPassword() + "');";
                 cMessage = "Successful registration";
+
             } else if (pNumber == 2) {
+
                 sql = "INSERT INTO Lærer(Navn,Kode) VALUES('" + u.getUsername() + "','" + u.getPassword() + "');";
                 cMessage = "Successful registration";
 
