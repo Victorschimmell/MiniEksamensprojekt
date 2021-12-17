@@ -42,28 +42,41 @@ public class Databasemetoder {
             cMessage = "No username or password inserted";
 
         } else {
+            try {
+                if (pNumber == 1) {
 
-            if (pNumber == 1) {
-                sql = "INSERT INTO Elev(Navn,Kode) VALUES('" + u.getUsername() + "','" + u.getPassword() + "');";
-                cMessage = "Successful registration";
+                    sql = "INSERT INTO Elev(Navn,Kode) VALUES('" + u.getUsername() + "','" + u.getPassword() + "');";
+                    cMessage = "Successful registration";
 
-            } else if (pNumber == 2) {
+                } else if (pNumber == 2) {
 
-                sql = "INSERT INTO Lærer(Navn,Kode) VALUES('" + u.getUsername() + "','" + u.getPassword() + "');";
-                cMessage = "Successful registration";
+                    sql = "INSERT INTO Lærer(Navn,Kode) VALUES('" + u.getUsername() + "','" + u.getPassword() + "');";
+                    cMessage = "Successful registration";
 
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
             }
 
-        }
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.executeUpdate();
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            cMessage = "Username already exists";
+                if (pNumber == 1) {
+                    App.setRoot("Secondary");
+                    pNumber = 3;
+                } else if (pNumber == 2) {
+                    App.setRoot("third");
+                    pNumber = 4;
+                }
 
-        } finally {
-            conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                cMessage = "Bruger findes allerede";
+
+            } finally {
+                conn.close();
+            }
         }
 
     }
