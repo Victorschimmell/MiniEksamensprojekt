@@ -25,5 +25,6 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Button fx:id="OpretQuiz1" layoutX="69.0" layoutY="537.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="19.0" prefWidth="140.0" text="Log ud og gå tilbage" />
    </children>
 </AnchorPane>
