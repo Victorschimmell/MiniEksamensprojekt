@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -32,7 +31,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="UserConfirm" layoutX="519.0" layoutY="388.0" prefHeight="35.0" prefWidth="184.0" textAlignment="CENTER" textFill="RED" />
+      <Text fx:id="UserConfirm" fill="RED" layoutX="412.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="330.9366455078125" />
       
    </children>
 </AnchorPane>

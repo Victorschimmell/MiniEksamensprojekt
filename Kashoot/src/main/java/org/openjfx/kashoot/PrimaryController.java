@@ -3,19 +3,17 @@ package org.openjfx.kashoot;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -68,7 +66,7 @@ public class PrimaryController implements Initializable {
     @FXML
     private CheckBox DKorrekt;
     @FXML
-    private Label UserConfirm;
+    private Text UserConfirm;
     @FXML
     private Label verifyLogin;
 

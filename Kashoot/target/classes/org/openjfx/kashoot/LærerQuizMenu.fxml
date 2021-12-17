@@ -11,7 +11,7 @@
    <children>
       <AnchorPane layoutX="331.0" layoutY="-10.0" prefHeight="614.0" prefWidth="475.0" style="-fx-background-color: #008080#008080;">
          <children>
-            <ListView fx:id="OpgaveList" layoutX="53.0" layoutY="88.0" prefHeight="494.0" prefWidth="373.0" />
+            <ListView fx:id="OpgaveList" layoutX="53.0" layoutY="88.0" prefHeight="494.0" prefWidth="373.0" style="-fx-border-color: Black;" />
             <Text fill="WHITE" layoutX="54.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mine nuværende opgaver" textAlignment="CENTER" wrappingWidth="372.61676025390625">
                <font>
                   <Font size="23.0" />

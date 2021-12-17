@@ -30,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="UserConfirm" layoutX="523.0" layoutY="388.0" prefHeight="39.0" prefWidth="149.0" textAlignment="CENTER" textFill="RED" />
+      <Text fx:id="UserConfirm" fill="RED" layoutX="412.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="330.9366455078125" />
       <Button layoutX="638.0" layoutY="523.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Tilbage" />
    </children>
 </AnchorPane>
