@@ -21,16 +21,16 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextField fx:id="txtUsername1" layoutX="505.0" layoutY="254.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
-      <PasswordField fx:id="txtPassword1" layoutX="504.0" layoutY="293.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
-      <Button fx:id="REGACC" layoutX="546.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Opret" />
-      <Text layoutX="504.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
+      <TextField fx:id="txtUsername1" layoutX="501.0" layoutY="238.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword1" layoutX="501.0" layoutY="277.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword1Confirm" layoutX="501.0" layoutY="319.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <Button fx:id="REGACC" layoutX="554.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Opret" />
+      <Text layoutX="501.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="UserConfirm" layoutX="506.0" layoutY="392.0" prefHeight="39.0" prefWidth="149.0" />
-      <PasswordField fx:id="txtPassword1Confirm" layoutX="503.0" layoutY="335.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
-      <Button layoutX="659.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Tilbage" />
+      <Label fx:id="UserConfirm" layoutX="523.0" layoutY="388.0" prefHeight="39.0" prefWidth="149.0" textAlignment="CENTER" textFill="RED" />
+      <Button layoutX="638.0" layoutY="523.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Tilbage" />
    </children>
 </AnchorPane>

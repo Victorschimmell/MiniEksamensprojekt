@@ -23,16 +23,16 @@
       </AnchorPane>
       <TextField fx:id="txtUsername2" layoutX="501.0" layoutY="238.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
       <PasswordField fx:id="txtPassword2" layoutX="501.0" layoutY="277.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword2Confirm" layoutX="501.0" layoutY="319.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
       <Button layoutX="554.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleBtnAddUser" text="Opret" />
      
-      <Button layoutX="638.0" layoutY="523.0" mnemonicParsing="false" onAction="#switchToThird" text="Tilbage" />
+      <Button layoutX="640.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToThird" text="Tilbage" />
       <Text layoutX="501.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret din bruger:">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="UserConfirm" layoutX="489.0" layoutY="354.0" prefHeight="35.0" prefWidth="184.0" />
-      <PasswordField fx:id="txtPassword2Confirm" layoutX="501.0" layoutY="319.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <Label fx:id="UserConfirm" layoutX="519.0" layoutY="388.0" prefHeight="35.0" prefWidth="184.0" textAlignment="CENTER" textFill="RED" />
       
    </children>
 </AnchorPane>
