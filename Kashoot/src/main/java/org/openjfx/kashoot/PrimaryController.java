@@ -153,22 +153,26 @@ public class PrimaryController implements Initializable {
                 if (txtPassword1.getText().equals(txtPassword1Confirm.getText())) {
                     DB.saveUser(new User(-1, txtUsername1.getText(), txtPassword1.getText()));
                     UserConfirm.setText(DB.cMessage);
-                    
+
                 } else {
                     System.out.println("Kodeord matcher ikke");
                     UserConfirm.setText("Kodeord matcher ikke");
                 }
+            } else {
+                UserConfirm.setText("Intet brugernavn eller kodeord inskrevet");
             }
         } else if (DB.pNumber == 2) {
             if ((!txtUsername2.getText().isBlank() && !txtPassword2.getText().isBlank())) {
                 if (txtPassword2.getText().equals(txtPassword2Confirm.getText())) {
                     DB.saveUser(new User(-1, txtUsername2.getText(), txtPassword2.getText()));
                     UserConfirm.setText(DB.cMessage);
-                    
+
                 } else {
                     System.out.println("Kodeord matcher ikke");
                     UserConfirm.setText("Kodeord matcher ikke");
                 }
+            } else {
+                UserConfirm.setText("Intet brugernavn eller kodeord inskrevet");
             }
 
         } else {
