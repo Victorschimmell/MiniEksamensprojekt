@@ -32,7 +32,7 @@
          </font>
       </Text>
       <Label fx:id="UserConfirm" layoutX="489.0" layoutY="354.0" prefHeight="35.0" prefWidth="184.0" />
-      <PasswordField fx:id="txtPassword21" layoutX="501.0" layoutY="319.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword2Confirm" layoutX="501.0" layoutY="319.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
       
    </children>
 </AnchorPane>

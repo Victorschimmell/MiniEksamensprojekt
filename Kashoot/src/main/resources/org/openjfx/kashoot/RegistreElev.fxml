@@ -30,7 +30,7 @@
          </font>
       </Text>
       <Label fx:id="UserConfirm" layoutX="506.0" layoutY="392.0" prefHeight="39.0" prefWidth="149.0" />
-      <PasswordField fx:id="txtPassword11Verify" layoutX="503.0" layoutY="335.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="txtPassword1Confirm" layoutX="503.0" layoutY="335.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
       <Button layoutX="659.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Tilbage" />
    </children>
 </AnchorPane>
