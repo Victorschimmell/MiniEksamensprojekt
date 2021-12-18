@@ -17,7 +17,9 @@ import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
+
 import javafx.scene.control.CheckBox;
+
 
 public class PrimaryController implements Initializable {
 
@@ -72,7 +74,7 @@ public class PrimaryController implements Initializable {
     @FXML 
     private Text QuizIDdis;
 
-    
+
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -92,6 +94,7 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
            
         }
+        
 
     }
 
@@ -272,5 +275,6 @@ public class PrimaryController implements Initializable {
         }
 
     }
+
 
 }

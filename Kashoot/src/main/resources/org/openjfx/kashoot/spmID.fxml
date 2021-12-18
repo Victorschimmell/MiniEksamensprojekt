@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-      <TextField layoutX="501.0" layoutY="238.0" promptText="ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id = "IDField" layoutX="501.0" layoutY="238.0" promptText="ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       <Button layoutX="501.0" layoutY="285.0" mnemonicParsing="false" onAction="#switchToSpm" prefHeight="33.0" prefWidth="158.0" text="Start test" />
       <Text layoutX="499.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indtast prøve-ID">
          <font>
