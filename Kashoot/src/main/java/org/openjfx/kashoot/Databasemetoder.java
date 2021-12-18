@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author peter
@@ -136,20 +137,22 @@ public class Databasemetoder {
                 } finally {
                     preparedStatement.close();
                     rs.close();
+                    conn.close();
+                    
                 }
 
                 return true;
 
             } else {
+                cMessage = "Brugernavn eller kodeord er forkert";
+            
                 return false;
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            cMessage = "Bruger findes ikke";
             return false;
 
-            // finally gør så at man kan kører kode ligegyldigt om koden førhen har fejlet i
-            // en try catch, hvilket gør så at recordset og mit preparedstatement lukker
-            // ligegyldigt hvad
         } finally {
             preparedStatement.close();
             rs.close();
@@ -167,17 +170,16 @@ public class Databasemetoder {
         try {
             conn = DriverManager.getConnection(connectionString);
 
-            ps = conn.prepareStatement("SELECT Navn FROM Quiz WHERE Lærer_ID ='" + CurrentUser + "'");
+            ps = conn.prepareStatement("SELECT * FROM Quiz WHERE Lærer_ID ='" + CurrentUser + "'");
 
             rs = ps.executeQuery();
 
             try {
                 while (rs.next()) {
 
-                    Names.add(rs.getString("navn"));
+                    Names.add("Quiznavn: " + rs.getString("navn")+ " | " + "ID: " + rs.getInt("ID"));
 
                 }
-                // System.out.println(Names.toString());
 
             } catch (Exception e) {
                 System.out.println("Fejl 2" + e);
@@ -221,5 +223,32 @@ public class Databasemetoder {
         }
 
     }
+
+    public int getQuizId(){
+        Connection conn = null;
+        int QuizId = 0;
+        String sql;
+        ResultSet rs = null;
+
+        try {
+            conn = DriverManager.getConnection(connectionString);
+ 
+
+            sql = "SELECT ID FROM Quiz ORDER BY ID DESC LIMIT 1";
+
+            try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+               
+                rs = pstmt.executeQuery();
+                QuizId = rs.getInt("ID");
+            } catch (Exception e) {
+               System.out.println("No ID");
+               
+            }
+
+        } catch (Exception e) {
+            System.out.println("Connection failed: " + e.getMessage());
+        }
+        return QuizId;
+    } 
 
 }

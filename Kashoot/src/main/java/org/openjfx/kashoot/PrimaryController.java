@@ -69,6 +69,10 @@ public class PrimaryController implements Initializable {
     private Text UserConfirm;
     @FXML
     private Label verifyLogin;
+    @FXML 
+    private Text QuizIDdis;
+
+    
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -81,6 +85,12 @@ public class PrimaryController implements Initializable {
         try {
             updateQuiz();
         } catch (Exception e) {
+        }
+        try {
+            QuizIDdis.setText(String.valueOf(DB.getQuizId()));
+
+        } catch (Exception e) {
+           
         }
 
     }
@@ -190,7 +200,7 @@ public class PrimaryController implements Initializable {
                     App.setRoot("spmID");
                     // Andre elev ting her
                 } else {
-                    verifyLogin.setText("Brugernavn eller kodeord er forkert");
+                    verifyLogin.setText(DB.cMessage);
                 }
 
             } else if (DB.pNumber == 4) {
@@ -201,7 +211,7 @@ public class PrimaryController implements Initializable {
                     DB.updateQuizTabel();
                     App.setRoot("LærerQuizMenu");
                 } else {
-                    verifyLogin.setText("Brugernavn eller kodeord er forkert");
+                    verifyLogin.setText(DB.cMessage);
                 }
 
             }
@@ -217,9 +227,7 @@ public class PrimaryController implements Initializable {
 
         // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
         // SQLITE
-        OpgaveList.getItems().add(quiznavn.getText());
-
-        DB.newQuiz(new Quiz(quiznavn.getText(), DB.CurrentUser));
+        DB.newQuiz(new Quiz(quiznavn.getText(), DB.CurrentUser, DB.getQuizId()));
 
         App.setRoot("LærerOpretSpm");
 
@@ -251,7 +259,6 @@ public class PrimaryController implements Initializable {
         try {
             OpgaveList.getItems().clear();
         } catch (Exception e) {
-            // TODO: handle exception
         }
 
         for (int i = 0; i < Names.size(); i++) {

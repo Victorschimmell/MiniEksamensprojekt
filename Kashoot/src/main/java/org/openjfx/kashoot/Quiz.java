@@ -13,22 +13,28 @@ public class Quiz {
 
     private String quizName;
     private int teacherID;
+    private static int quizId;
 
     /*
      * public User()
      * {}
      */
 
-    public Quiz( String _quizName, int _teacherID) {
+    public Quiz(String _quizName, int _teacherID, int _quizId) {
         quizName = _quizName;
         teacherID = _teacherID;
+        quizId = _quizId;
     }
 
     public String getquizName() {
         return quizName;
     }
-
     public int getteacherID() {
         return teacherID;
     }
+    public static int getquizId() {
+        return quizId;
+    }
+
+
 }
