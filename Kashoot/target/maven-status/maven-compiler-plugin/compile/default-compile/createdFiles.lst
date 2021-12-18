@@ -1,5 +1,6 @@
 org\openjfx\kashoot\User.class
 org\openjfx\kashoot\spm.class
+org\openjfx\kashoot\Svar.class
 org\openjfx\kashoot\Quiz.class
 module-info.class
 org\openjfx\kashoot\App.class

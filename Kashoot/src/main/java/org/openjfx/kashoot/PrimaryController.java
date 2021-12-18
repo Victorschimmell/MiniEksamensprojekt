@@ -7,10 +7,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -71,15 +73,20 @@ public class PrimaryController implements Initializable {
     private Text UserConfirm;
     @FXML
     private Label verifyLogin;
-    @FXML 
+    @FXML
     private Text QuizIDdis;
-
-
+    @FXML
+    private Button SvarKnap1;
+    @FXML
+    private Button SvarKnap2;
+    @FXML
+    private Button SvarKnap3;
+    @FXML
+    private Button SvarKnap4;
 
     Databasemetoder DB = new Databasemetoder();
 
     // PLACEHOLDER FOR SQL KODE
-
     // FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,12 +96,25 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
         }
         try {
+            
             QuizIDdis.setText(String.valueOf(DB.getQuizId()));
 
         } catch (Exception e) {
-           
+
         }
-        
+        try {
+           DB.displaySvarMuligheder();
+            
+           List<String> Test = DB.displaySvarMuligheder();
+           SvarKnap1.setText(Test.get(0));
+           SvarKnap2.setText(Test.get(1));
+           SvarKnap3.setText(Test.get(2));
+           SvarKnap4.setText(Test.get(3));
+
+
+        } catch (Exception e) {
+
+        }
 
     }
 
@@ -239,22 +259,21 @@ public class PrimaryController implements Initializable {
         App.setRoot("lærerQuizMenu");
     }
 
-
     // Andre funktioner i dunno Anders....
     @FXML
     private void IndsætSpm() throws SQLException, Exception {
 
         DB.SaveSpm(new spm(DB.getQuizId(), IndskrivSpm.getText()),
-        new Svar(DB.getSpmId(), SvarmulighedA.getText(), AKorrekt.isSelected()), 
-        new Svar(DB.getSpmId(),SvarmulighedB.getText(), BKorrekt.isSelected()),
-        new Svar(DB.getSpmId(),SvarmulighedC.getText(), CKorrekt.isSelected()),
-        new Svar(DB.getSpmId(),SvarmulighedD.getText(), DKorrekt.isSelected()));
+                new Svar(DB.getSpmId(), SvarmulighedA.getText(), AKorrekt.isSelected()),
+                new Svar(DB.getSpmId(), SvarmulighedB.getText(), BKorrekt.isSelected()),
+                new Svar(DB.getSpmId(), SvarmulighedC.getText(), CKorrekt.isSelected()),
+                new Svar(DB.getSpmId(), SvarmulighedD.getText(), DKorrekt.isSelected()));
 
-        SpørgsmålList.getItems().add("Spørgsmål: " + IndskrivSpm.getText() +
-                ", Svarmulighed A: " + SvarmulighedA.getText() + ":" + AKorrekt.isSelected() +
-                ", Svarmulighed B: " + SvarmulighedB.getText() + ":" + BKorrekt.isSelected() +
-                ", Svarmulighed C: " + SvarmulighedC.getText() + ":" + CKorrekt.isSelected() +
-                ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
+        SpørgsmålList.getItems().add("Spørgsmål: " + IndskrivSpm.getText()
+                + ", Svarmulighed A: " + SvarmulighedA.getText() + ":" + AKorrekt.isSelected()
+                + ", Svarmulighed B: " + SvarmulighedB.getText() + ":" + BKorrekt.isSelected()
+                + ", Svarmulighed C: " + SvarmulighedC.getText() + ":" + CKorrekt.isSelected()
+                + ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
 
     }
 
@@ -275,6 +294,5 @@ public class PrimaryController implements Initializable {
         }
 
     }
-
 
 }
