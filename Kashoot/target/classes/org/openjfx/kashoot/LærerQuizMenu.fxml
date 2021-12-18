@@ -32,6 +32,7 @@
             <Font name="Chalkboard SE Light" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="OpretQuiz1" layoutX="69.0" layoutY="537.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="19.0" prefWidth="140.0" text="Log ud og gå tilbage" />
+      <Button fx:id="OpretQuiz1" layoutX="14.0" layoutY="560.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="19.0" prefWidth="140.0" text="Log ud og gå tilbage" />
+      <Text fill="#00000090" layoutX="57.0" layoutY="265.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Organisationens funktionsbeskrivelser er et godt værktøj både forud for ansættelsen og efter. En funktionsbeskrivelse skal først og fremmest være beskrivende for funktionen, generel i sin form og konkret i sit indhold. Den skal fungere som et aktivt og synligt samarbejds- og udviklingsorienteret værktøj for den der besidder funktionen, dennes leder, HR-afdelingen og øvrige medarbejdere i organisationen, herunder potentielle interne kandidater på kort og lang sigt." wrappingWidth="224.2825469970703" />
    </children>
 </AnchorPane>

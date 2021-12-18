@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class Databasemetoder {
 
-    private final String connectionString = "jdbc:sqlite:src/kashootDB.db";
+    private final String connectionString = "jdbc:sqlite:Kashoot/src/kashootDB.db";
     public static String cMessage;
     public String verifyLogin;
     public static int pNumber;
@@ -184,7 +184,7 @@ public class Databasemetoder {
             }
 
         } catch (Exception e) {
-            System.out.println("Fejl 1" + e);
+            
         }
 
         return Names;
