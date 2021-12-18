@@ -99,17 +99,13 @@ public class PrimaryController implements Initializable {
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
-
         Databasemetoder.pNumber = 3;
-
     }
 
     @FXML
     private void switchToThird() throws IOException {
         App.setRoot("third");
-
         Databasemetoder.pNumber = 4;
-
     }
 
     @FXML
@@ -240,6 +236,8 @@ public class PrimaryController implements Initializable {
         App.setRoot("lærerQuizMenu");
     }
 
+
+    // Andre funktioner i dunno Anders....
     @FXML
     private void IndsætSpm() throws SQLException, Exception {
 

@@ -285,7 +285,7 @@ public class Databasemetoder {
             try {
                 for (int i = 0; i < 4;  i++) { 
 
-                sql = "INSERT INTO Svar_Muligheder(ID_Spørgsmål, Svar, Ksvar) VALUES('" + Svar[i].getSpmID() + "','" + Svar[i].getSvar() + "','"+ Svar[i].getsvarK() + "')";
+                sql = "INSERT INTO Svar_Muligheder(ID_Spørgsmål, Svar, Ksvar) VALUES('" + Svar[i].getSpmID()+1 + "','" + Svar[i].getSvar() + "','"+ Svar[i].getsvarK() + "')";
                 try (PreparedStatement svarst = conn.prepareStatement(sql)) {
                     svarst.executeUpdate();
                     System.out.println("Successfully created a new svar");
