@@ -11,20 +11,21 @@ package org.openjfx.kashoot;
  */
 public class spm {
 
-    private int idQuiz;
-    private String spørgsmål;
+    private int IDQuiz;
+    private String Spørgsmål;
 
-    public spm(int _idQuiz, String _spørgsmål ) {
-        idQuiz = _idQuiz;
-        spørgsmål = _spørgsmål;
-
+    public spm(int _idQuiz, String _Spørgsmål) {
+        IDQuiz = _idQuiz;
+        Spørgsmål = _Spørgsmål;
     }
 
-    public int getIdQuiz() {
-        return idQuiz;
+    public int getQuizId() {
+        return IDQuiz;
     }
 
     public String getSpm() {
-        return spørgsmål;
+        return Spørgsmål;
     }
-}
+  
+    }
+

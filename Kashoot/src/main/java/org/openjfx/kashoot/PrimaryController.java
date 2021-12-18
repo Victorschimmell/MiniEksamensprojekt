@@ -100,7 +100,7 @@ public class PrimaryController implements Initializable {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
 
-        DB.pNumber = 3;
+        Databasemetoder.pNumber = 3;
 
     }
 
@@ -108,7 +108,7 @@ public class PrimaryController implements Initializable {
     private void switchToThird() throws IOException {
         App.setRoot("third");
 
-        DB.pNumber = 4;
+        Databasemetoder.pNumber = 4;
 
     }
 
@@ -130,8 +130,8 @@ public class PrimaryController implements Initializable {
     @FXML
     private void switchToRegistreElev() throws IOException {
 
-        DB.pNumber = 1;
-        System.out.println(DB.pNumber);
+        Databasemetoder.pNumber = 1;
+        System.out.println(Databasemetoder.pNumber);
         System.out.println("Int pnumber = 1 ");
 
         App.setRoot("RegistreElev");
@@ -141,7 +141,7 @@ public class PrimaryController implements Initializable {
     @FXML
     private void switchToRegistreLærer() throws IOException {
 
-        DB.pNumber = 2;
+        Databasemetoder.pNumber = 2;
         System.out.println("Int pnumber = 2 ");
         App.setRoot("RegistreLærer");
 
@@ -155,12 +155,12 @@ public class PrimaryController implements Initializable {
     @FXML
     private void handleBtnAddUser() throws IOException, Exception {
 
-        System.out.println(DB.pNumber);
-        if (DB.pNumber == 1) {
+        System.out.println(Databasemetoder.pNumber);
+        if (Databasemetoder.pNumber == 1) {
             if ((!txtUsername1.getText().isBlank() && !txtPassword1.getText().isBlank())) {
                 if (txtPassword1.getText().equals(txtPassword1Confirm.getText())) {
                     DB.saveUser(new User(-1, txtUsername1.getText(), txtPassword1.getText()));
-                    UserConfirm.setText(DB.cMessage);
+                    UserConfirm.setText(Databasemetoder.cMessage);
 
                 } else {
                     System.out.println("Kodeord matcher ikke");
@@ -169,11 +169,11 @@ public class PrimaryController implements Initializable {
             } else {
                 UserConfirm.setText("Intet brugernavn eller kodeord inskrevet");
             }
-        } else if (DB.pNumber == 2) {
+        } else if (Databasemetoder.pNumber == 2) {
             if ((!txtUsername2.getText().isBlank() && !txtPassword2.getText().isBlank())) {
                 if (txtPassword2.getText().equals(txtPassword2Confirm.getText())) {
                     DB.saveUser(new User(-1, txtUsername2.getText(), txtPassword2.getText()));
-                    UserConfirm.setText(DB.cMessage);
+                    UserConfirm.setText(Databasemetoder.cMessage);
 
                 } else {
                     System.out.println("Kodeord matcher ikke");
@@ -194,16 +194,16 @@ public class PrimaryController implements Initializable {
             // Tjekker om boolean er TRUE i første if statement, hvis den ikke er sand, så
             // eksisterer navnet ikke og den giver en besked
 
-            if (DB.pNumber == 3) {
+            if (Databasemetoder.pNumber == 3) {
                 if (DB.verifyLogin(txtLog1Username.getText(), txtLog1Password.getText())) {
                     verifyLogin.setText("Successful login");
                     App.setRoot("spmID");
                     // Andre elev ting her
                 } else {
-                    verifyLogin.setText(DB.cMessage);
+                    verifyLogin.setText(Databasemetoder.cMessage);
                 }
 
-            } else if (DB.pNumber == 4) {
+            } else if (Databasemetoder.pNumber == 4) {
                 if (DB.verifyLogin(txtLog2Username.getText(), txtLog2Password.getText())) {
                     verifyLogin.setText("Successful login");
                     System.out.println("Successful login");
@@ -211,7 +211,7 @@ public class PrimaryController implements Initializable {
                     DB.updateQuizTabel();
                     App.setRoot("LærerQuizMenu");
                 } else {
-                    verifyLogin.setText(DB.cMessage);
+                    verifyLogin.setText(Databasemetoder.cMessage);
                 }
 
             }
@@ -227,7 +227,7 @@ public class PrimaryController implements Initializable {
 
         // PLACEHOLDER SHIT HERE; DOES NOT WORK AND SHOULD NOT STAY; WE NEED TO CONNECT
         // SQLITE
-        DB.newQuiz(new Quiz(quiznavn.getText(), DB.CurrentUser, DB.getQuizId()));
+        DB.newQuiz(new Quiz(quiznavn.getText(), Databasemetoder.CurrentUser, DB.getQuizId()));
 
         App.setRoot("LærerOpretSpm");
 
@@ -241,7 +241,13 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void IndsætSpm() throws IOException {
+    private void IndsætSpm() throws SQLException, Exception {
+
+        DB.SaveSpm(new spm(DB.getQuizId(), IndskrivSpm.getText()),
+        new Svar(DB.getSpmId(), SvarmulighedA.getText(), AKorrekt.isSelected()), 
+        new Svar(DB.getSpmId(),SvarmulighedB.getText(), BKorrekt.isSelected()),
+        new Svar(DB.getSpmId(),SvarmulighedC.getText(), CKorrekt.isSelected()),
+        new Svar(DB.getSpmId(),SvarmulighedD.getText(), DKorrekt.isSelected()));
 
         SpørgsmålList.getItems().add("Spørgsmål: " + IndskrivSpm.getText() +
                 ", Svarmulighed A: " + SvarmulighedA.getText() + ":" + AKorrekt.isSelected() +

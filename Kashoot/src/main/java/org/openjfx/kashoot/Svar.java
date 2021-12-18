@@ -9,22 +9,32 @@ package org.openjfx.kashoot;
  *
  * @author peter
  */
-public class spm {
+public class Svar {
 
-    private int idQuiz;
-    private String spørgsmål;
+    private int SpmID;
+    private String svarMulighed;
+    private int svarK;
 
-    public spm(int _idQuiz, String _spørgsmål ) {
-        idQuiz = _idQuiz;
-        spørgsmål = _spørgsmål;
+    public Svar(int _SpmID, String _svarMmulighed, Boolean _svarK) {
+        SpmID = _SpmID;
+        svarMulighed = _svarMmulighed;
 
+        if(_svarK) {
+            svarK = 1;
+        } else if(!_svarK) {
+            svarK= 0;
+        } else {
+            System.out.println("Something fukking wrong with svarK");
+        }
+        
     }
-
-    public int getIdQuiz() {
-        return idQuiz;
+    public int getSpmID() {
+        return SpmID;
     }
-
-    public String getSpm() {
-        return spørgsmål;
+    public String getSvar() {
+        return svarMulighed;
+    }
+    public int getsvarK() {
+        return svarK;
     }
 }
