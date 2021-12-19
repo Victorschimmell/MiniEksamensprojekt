@@ -11,21 +11,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-
-/**
- *
- * @author peter
- */
 public class Databasemetoder {
 
-    private final String connectionString = "jdbc:sqlite:Kashoot/src/kashootDB.db";
+    private final String connectionString = "jdbc:sqlite:src/kashootDB.db";
     public static String cMessage;
     public String verifyLogin;
     public static int pNumber;
+    public static int bPressedNum;
 
     public static int CurrentUser;
 
+    public String SvarMValue;
+    public static int preInject;
+    public static int KorrektSvar;
+
+    //public static int ActiveQuizID; kan sættes som kode i fremtiden, kan indsætte i sql kode under displaySvarMuligheder//
     public void saveUser(User u) throws SQLException, Exception {
         Connection conn = null;
         Class.forName("org.sqlite.JDBC");
@@ -60,7 +62,7 @@ public class Databasemetoder {
                 System.out.println(e);
             }
 
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.executeUpdate();
 
                 if (pNumber == 1) {
@@ -138,14 +140,14 @@ public class Databasemetoder {
                     preparedStatement.close();
                     rs.close();
                     conn.close();
-                    
+
                 }
 
                 return true;
 
             } else {
                 cMessage = "Brugernavn eller kodeord er forkert";
-            
+
                 return false;
             }
 
@@ -158,7 +160,7 @@ public class Databasemetoder {
             rs.close();
             conn.close();
         }
-        
+
     }
 
     public ArrayList<String> updateQuizTabel() throws SQLException, Exception {
@@ -178,7 +180,7 @@ public class Databasemetoder {
             try {
                 while (rs.next()) {
 
-                    Names.add("Quiznavn: " + rs.getString("navn")+ " | " + "QuizID/OpgaveKode: " + rs.getInt("ID"));
+                    Names.add("Quiznavn: " + rs.getString("navn") + " | " + "QuizID/OpgaveKode: " + rs.getInt("ID"));
 
                 }
 
@@ -187,7 +189,7 @@ public class Databasemetoder {
             }
 
         } catch (Exception e) {
-            
+
         }
 
         return Names;
@@ -213,7 +215,7 @@ public class Databasemetoder {
 
         }
         // Skab forbindelse til databasen...
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
             System.out.println("Successfully created a new quiz");
         } catch (SQLException e) {
@@ -224,7 +226,8 @@ public class Databasemetoder {
         }
 
     }
-    public int getSpmId(){
+
+    public int getSpmId() {
         Connection conn = null;
         int SpmId = 0;
         String sql;
@@ -232,19 +235,19 @@ public class Databasemetoder {
         try {
             conn = DriverManager.getConnection(connectionString);
             sql = "SELECT ID FROM Spørgsmål ORDER BY ID DESC LIMIT 1";
-            try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 rs = pstmt.executeQuery();
                 SpmId = rs.getInt("ID");
             } catch (Exception e) {
-               System.out.println("No ID");
+                System.out.println("No ID");
             }
         } catch (Exception e) {
             System.out.println("Connection failed: " + e.getMessage());
         }
         return SpmId;
-    } 
+    }
 
-    public int getQuizId(){
+    public int getQuizId() {
         Connection conn = null;
         int QuizId = 0;
         String sql;
@@ -252,23 +255,22 @@ public class Databasemetoder {
         try {
             conn = DriverManager.getConnection(connectionString);
             sql = "SELECT ID FROM Quiz ORDER BY ID DESC LIMIT 1";
-            try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 rs = pstmt.executeQuery();
                 QuizId = rs.getInt("ID");
             } catch (Exception e) {
-               System.out.println("No ID");
+                System.out.println("No ID");
             }
         } catch (Exception e) {
             System.out.println("Connection failed: " + e.getMessage());
         }
         return QuizId;
-    } 
+    }
 
-
-    public void SaveSpm(spm Spm, Svar A, Svar B, Svar C, Svar D) throws SQLException, Exception{
+    public void SaveSpm(spm Spm, Svar A, Svar B, Svar C, Svar D) throws SQLException, Exception {
         Connection conn = null;
         String sql = null;
-        Svar[] Svar = { A,  B,  C,  D};
+        Svar[] Svar = {A, B, C, D};
 
         // Skab forbindelse til databasen...
         try {
@@ -279,23 +281,23 @@ public class Databasemetoder {
             System.out.println("DB Error: " + e.getMessage());
         }
         // Skab forbindelse til databasen...
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
 
             try {
-                for (int i = 0; i < 4;  i++) { 
+                for (int i = 0; i < 4; i++) {
 
-                sql = "INSERT INTO Svar_Muligheder(ID_Spørgsmål, Svar, Ksvar) VALUES('" + Svar[i].getSpmID()+1 + "','" + Svar[i].getSvar() + "','"+ Svar[i].getsvarK() + "')";
-                try (PreparedStatement svarst = conn.prepareStatement(sql)) {
-                    svarst.executeUpdate();
-                    System.out.println("Successfully created a new svar");
-                    
-                } catch (SQLException e) {
-                    System.out.println(e.getMessage());
-                }
+                    sql = "INSERT INTO Svar_Muligheder(ID_Spørgsmål, Svar, Ksvar) VALUES('" + Svar[i].getSpmID() + 1 + "','" + Svar[i].getSvar() + "','" + Svar[i].getsvarK() + "')";
+                    try ( PreparedStatement svarst = conn.prepareStatement(sql)) {
+                        svarst.executeUpdate();
+                        System.out.println("Successfully created a new svar");
+
+                    } catch (SQLException e) {
+                        System.out.println(e.getMessage());
+                    }
 
                 }
-            } catch(Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
 
@@ -306,9 +308,81 @@ public class Databasemetoder {
         } finally {
             conn.close();
         }
-    
-
 
     }
-    
+
+    public List<String> displaySvarMuligheder() throws SQLException, Exception {
+        //ActiveQuizID = 7;//
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        List<String> svarMuligheder = new ArrayList<>();
+
+        try {
+            conn = DriverManager.getConnection(connectionString);
+
+            ps = conn.prepareStatement("SELECT Svar_Muligheder.Svar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = 29;");
+
+            rs = ps.executeQuery();
+            try {
+                {
+                    while (rs.next()) {
+                        svarMuligheder.add(rs.getString("Svar"));
+                    }
+
+                }
+
+            } catch (Exception e) {
+                System.out.println("DB Error 1" + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("DB Error 1" + e.getMessage());
+        } finally {
+            conn.close();
+            rs.close();
+            ps.close();
+        }
+        return svarMuligheder;
+    }
+
+    public void korrektSvarCheck() throws SQLException, Exception {
+        //ActiveQuizID = 7;//
+        Connection conn = null;
+        String sql = null;
+        ResultSet rs = null;
+
+        // Skab forbindelse til databasen...
+        try {
+            conn = DriverManager.getConnection(connectionString);
+
+            if (bPressedNum == 1) {
+                sql = "SELECT Svar_Muligheder.Ksvar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = 29 AND Svar_Muligheder.ID = 1; ";
+            } else if (bPressedNum == 2) {
+                sql = "SELECT Svar_Muligheder.Ksvar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = 29 AND Svar_Muligheder.ID = 2; ";
+            } else if (bPressedNum == 3) {
+                sql = "SELECT Svar_Muligheder.Ksvar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = 29 AND Svar_Muligheder.ID = 3; ";
+            } else if (bPressedNum == 4) {
+                sql = "SELECT Svar_Muligheder.Ksvar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = 29 AND Svar_Muligheder.ID = 4; ";
+            }
+
+            try ( PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                rs = pstmt.executeQuery();
+                KorrektSvar = rs.getInt("Ksvar");
+               
+            } catch (Exception e) {
+                System.out.println("Failure in program");
+            }
+
+        } catch (SQLException e) {
+            // Skriver fejlhåndtering her
+            System.out.println("DB Error: " + e.getMessage());
+        }
+            
+        finally{
+            rs.close();
+        }
+    }
 }
