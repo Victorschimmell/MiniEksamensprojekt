@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
       <AnchorPane layoutX="331.0" layoutY="-10.0" prefHeight="614.0" prefWidth="475.0" style="-fx-background-color: #008080#008080;">
          <children>
@@ -33,6 +33,11 @@
          </font>
       </Text>
       <Button fx:id="OpretQuiz1" layoutX="14.0" layoutY="560.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="19.0" prefWidth="140.0" text="Log ud og gå tilbage" />
-      <Text fill="#00000090" layoutX="57.0" layoutY="265.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Organisationens funktionsbeskrivelser er et godt værktøj både forud for ansættelsen og efter. En funktionsbeskrivelse skal først og fremmest være beskrivende for funktionen, generel i sin form og konkret i sit indhold. Den skal fungere som et aktivt og synligt samarbejds- og udviklingsorienteret værktøj for den der besidder funktionen, dennes leder, HR-afdelingen og øvrige medarbejdere i organisationen, herunder potentielle interne kandidater på kort og lang sigt." wrappingWidth="224.2825469970703" />
+      <Text fill="#00000090" layoutX="57.0" layoutY="296.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Organisationens funktionsbeskrivelser er et godt værktøj både forud for ansættelsen og efter. En funktionsbeskrivelse skal først og fremmest være beskrivende for funktionen, generel i sin form og konkret i sit indhold. Den skal fungere som et aktivt og synligt samarbejds- og udviklingsorienteret værktøj for den der besidder funktionen, dennes leder, HR-afdelingen og øvrige medarbejdere i organisationen, herunder potentielle interne kandidater på kort og lang sigt." wrappingWidth="224.2825469970703" />
+      <Button fx:id="OpretQuiz2" layoutX="91.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchToElevSvar" prefHeight="33.0" prefWidth="144.0" text="Elev Svar">
+         <font>
+            <Font name="Avenir Book" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -31,7 +31,7 @@ public class PrimaryController implements Initializable {
     @FXML
     private PasswordField txtPassword1, txtPassword1Confirm, txtPassword2, txtPassword2Confirm;
     @FXML
-    private ListView<String> OpgaveList, SpørgsmålList;
+    private ListView<String> OpgaveList, SpørgsmålList, elevList;
     @FXML
     private TextArea IndskrivSpm;
     @FXML
@@ -58,11 +58,23 @@ public class PrimaryController implements Initializable {
 
     public static int point;
 
+    private ArrayList<String> allElever;
+    
     Databasemetoder DB = new Databasemetoder();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        try {
+              allElever = DB.getAllElever();
+            for (int i = 0; i < allElever.size(); i++) {
+                elevList.getItems().add(allElever.get(i));
+            }
+        } catch (Exception e) {
+        
+            
+            
+        }
         try {
             updateQuiz();
         } catch (Exception e) {
@@ -229,6 +241,11 @@ public class PrimaryController implements Initializable {
     private void switchToFourth() throws IOException {
         App.setRoot("fourth");
     }
+        @FXML
+    private void switchToElevSvar() throws IOException {
+        App.setRoot("ElevSvar");
+    }
+    
 
     @FXML
     private void handleBtnAddUser() throws IOException, Exception {

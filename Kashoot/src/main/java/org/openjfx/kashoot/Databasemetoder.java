@@ -10,9 +10,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import static org.openjfx.kashoot.Databasemetoder.CurrentUser;
 
 public class Databasemetoder {
 
@@ -496,4 +498,44 @@ public class Databasemetoder {
             System.out.println("Connection failed: " + e.getMessage());
         }
     }
+
+
+    public ArrayList<String> getAllElever() throws SQLException, Exception {
+
+        ArrayList<String> allElever = new ArrayList<>();
+
+        Connection conn = null;
+        Class.forName("org.sqlite.JDBC");
+
+        //Skab forbindelse til databasen...
+        try {
+            conn = DriverManager.getConnection(connectionString);
+        } catch (SQLException e) {
+            //Skrive fejlhåndtering her
+            System.out.println("DB Error: " + e.getMessage());
+        }
+
+        //Hent alle personer fra databasen v.h.a. SQL
+        try {
+            Statement stat = conn.createStatement();
+
+            //Læser fra database alt data fra databasetabellen people.   
+            ResultSet rs = stat.executeQuery("SELECT Elev.NAVN,Elev.ID FROM (((Lærer INNER JOIN Quiz ON Quiz.Lærer_ID = Lærer.ID) INNER JOIN ELEV_SVAR ON Quiz.ID=Elev_Svar.ID_Quiz) INNER JOIN Elev ON Elev_Svar.ID_Elev = Elev.ID) Where Lærer.ID = '" + CurrentUser + "'");
+
+            //Løber data igennem via en løkke og skriver det up.    
+            while (rs.next()) {
+                allElever.add("Navn: " + rs.getString("Navn") + " ID: " + rs.getInt("ID"));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            //Skrive fejlhåndtering her
+            System.out.println("DB Error: " + e.getMessage());
+        }
+        //Luk forbindelsen til databasen
+
+        conn.close();
+
+        return allElever;
+    }
+
 }
