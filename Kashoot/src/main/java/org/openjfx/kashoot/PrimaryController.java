@@ -1,6 +1,7 @@
 package org.openjfx.kashoot;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -20,7 +21,6 @@ import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
-
 import javafx.scene.control.CheckBox;
 
 public class PrimaryController implements Initializable {
@@ -38,7 +38,7 @@ public class PrimaryController implements Initializable {
     private CheckBox AKorrekt, BKorrekt, CKorrekt, DKorrekt;
 
     @FXML
-    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr;
+    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr, xRigtige;
     @FXML
     private Label verifyLogin;
 
@@ -52,10 +52,14 @@ public class PrimaryController implements Initializable {
 
     private int knap1 = 0, knap2 = 1, knap3 = 2, knap4 = 3;
 
+    private static ArrayList<String[]> ValgteSvar = new ArrayList<String[]>();
+
+    private static ArrayList<String> MineSvar = new ArrayList<String>();
+
+    private static int point;
+
     Databasemetoder DB = new Databasemetoder();
 
-    // PLACEHOLDER FOR SQL KODE
-    // FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -70,6 +74,7 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
 
         }
+
         try {
             showSvarMuligheder();
 
@@ -80,10 +85,66 @@ public class PrimaryController implements Initializable {
             SpørgsmålView.setText(DB.displaySpm(NrSpm));
             NrSpm_String = String.valueOf(NrSpm + 1);
 
-            SpmNr.setText(NrSpm_String);
+            SpmNr.setText(NrSpm_String + " / " + Databasemetoder.spmMængde);
+
+            DB.korrektSvarCheck();
 
         } catch (Exception e) {
 
+        }
+
+        try {
+            if (App.CurrentRoot.equals("fourth")) {
+
+                point = 0;
+                MineSvar.clear();
+
+                try {
+                    for (int i = 0; i < ValgteSvar.size(); i++) {
+                        for (int j = 0; j < ValgteSvar.get(i).length; j++) {
+
+                            MineSvar.add((String) Array.get(ValgteSvar.get(i), j));
+
+                        }
+                    }
+
+                    try {
+                        System.out.println(MineSvar.toArray());
+                        for (int i = 0; i < Databasemetoder.rSet.size(); i++) {
+                             if (MineSvar.get(i).equals(Databasemetoder.rSet.get(i))) {
+                                if(MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("1")){
+                               
+                                point++;
+                                System.out.println(point);
+                                }
+                            }else{
+                                if(MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("0") || Databasemetoder.rSet.get(i).equals("1") && MineSvar.get(i).equals("0")){
+                               
+                                point--;
+                                System.out.println(point);
+                        } 
+                    }
+    
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage() + " Problemer med sammenligning");
+                    }
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage() + " Problemer med MineSvar");
+                }
+
+                double perC;
+                perC = point * 100 / Databasemetoder.AlleRigtige;
+                xRigtige.setText(point + "/" + Databasemetoder.AlleRigtige + " Rigtige!" + "\n" + perC + "%");
+
+            }
+        
+
+        } catch (
+
+        Exception e) {
+            System.out.println(e.getMessage() + " Hejsa");
         }
 
     }
@@ -292,7 +353,6 @@ public class PrimaryController implements Initializable {
     private void showSvarMuligheder() throws Exception {
 
         List<String> SvarMList = DB.displaySvarMuligheder();
-        System.out.println(knap1 + " " + knap2 + " " + knap3 + " " + knap4);
         SvarKnap1.setText(SvarMList.get(knap1));
         SvarKnap2.setText(SvarMList.get(knap2));
         SvarKnap3.setText(SvarMList.get(knap3));
@@ -301,92 +361,44 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void handleBtnValg1() throws Exception {
-
-        if (SvarKnap1.isSelected()) {
-            SvarKnap1.setStyle("-fx-background-color: #4ca122");
-
-            DB.korrektSvarCheck();
-            if (Databasemetoder.rSet.get(knap1).equals("1")) {
-                System.out.println("Korrekt");
-
-
-
-            } else {
-                System.out.println("Forkert");
-            }
-
-        } else {
-            SvarKnap1.setStyle("-fx-background-color: #66BF39");
-        }
-
-    }
-
-    @FXML
-    private void handleBtnValg2() throws Exception {
-
-        if (SvarKnap2.isSelected()) {
-            SvarKnap2.setStyle("-fx-background-color: #298acf");
-
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap2).equals("1")) {
-            System.out.println("Korrekt");
-        } else {
-            System.out.println("Forkert");
-        }
-    } else {
-        SvarKnap2.setStyle("-fx-background-color: #45A3E5");
-    }
-
-    }
-
-    @FXML
-    private void handleBtnValg3() throws Exception {
-        
-        if (SvarKnap3.isSelected()) {
-            SvarKnap3.setStyle("-fx-background-color: #e8ae07");
-
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap3).equals("1")) {
-            System.out.println("Korrekt");
-        } else {
-            System.out.println("Forkert");
-        }
-    }else {
-            SvarKnap3.setStyle("-fx-background-color: #FFC00A");
-        }
-
-    }
-
-    @FXML
-    private void handleBtnValg4() throws Exception {
-      
-        if (SvarKnap4.isSelected()) {
-            SvarKnap4.setStyle("-fx-background-color: #a10a22");
-
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap4).equals("1")) {
-            System.out.println("Korrekt");
-        } else {
-            System.out.println("Forkert");
-        }
-    }else {
-        SvarKnap4.setStyle("-fx-background-color: #FF3355");
-    }
+    private void handleValgBtn() throws Exception {
+        ColorSwitch();
 
     }
 
     @FXML
     private void NæsteKnap() throws Exception {
         try {
-            if (NrSpm < Databasemetoder.spmMængde - 1) {
-                NrSpm++;
 
+            if (NrSpm < Databasemetoder.spmMængde) {
+
+                try {
+                    ValgteSvar.set(NrSpm,
+                            new String[] { TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()),
+                                    TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected()) });
+                    System.out.println("Arraylist Overwritten");
+
+                } catch (Exception e) {
+
+                    ValgteSvar.add(NrSpm,
+                            new String[] { TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()),
+                                    TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected()) });
+                    System.out.println("Arraylist added missing item");
+
+                }
+                /*
+                 * DEBUG USE
+                 * for (String i[] : ValgteSvar) {
+                 * System.out.println(Arrays.toString(i));
+                 * }
+                 */
                 try {
                     knap1 += 4;
                     knap2 += 4;
                     knap3 += 4;
                     knap4 += 4;
+
+                    NrSpm++;
 
                 } catch (Exception e) {
                     System.out.println(e);
@@ -404,16 +416,29 @@ public class PrimaryController implements Initializable {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
 
-                    SpmNr.setText(NrSpm_String);
+                    SpmNr.setText(NrSpm_String + " / " + Databasemetoder.spmMængde);
 
                 } catch (Exception e) {
 
                 }
+                if (NrSpm >= Databasemetoder.spmMængde) {
+                    App.setRoot("fourth");
+                }
 
+            } else {
+                App.setRoot("fourth");
             }
+
         } catch (Exception e) {
 
         }
+
+        SvarKnap1.setSelected(false);
+        SvarKnap2.setSelected(false);
+        SvarKnap3.setSelected(false);
+        SvarKnap4.setSelected(false);
+
+        ColorSwitch();
 
     }
 
@@ -443,7 +468,7 @@ public class PrimaryController implements Initializable {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
 
-                    SpmNr.setText(NrSpm_String);
+                    SpmNr.setText(NrSpm_String + " / " + Databasemetoder.spmMængde);
 
                 } catch (Exception e) {
 
@@ -453,6 +478,52 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
 
         }
+        SvarKnap1.setSelected(false);
+        SvarKnap2.setSelected(false);
+        SvarKnap3.setSelected(false);
+        SvarKnap4.setSelected(false);
+
+        ColorSwitch();
 
     }
+
+    @FXML
+    public void ColorSwitch() throws Exception {
+
+        if (SvarKnap1.isSelected()) {
+            SvarKnap1.setStyle("-fx-background-color: #4ca122");
+        } else {
+            SvarKnap1.setStyle("-fx-background-color: #66BF39");
+        }
+
+        if (SvarKnap2.isSelected()) {
+            SvarKnap2.setStyle("-fx-background-color: #298acf");
+        } else {
+            SvarKnap2.setStyle("-fx-background-color: #45A3E5");
+        }
+
+        if (SvarKnap3.isSelected()) {
+            SvarKnap3.setStyle("-fx-background-color: #e8ae07");
+        } else {
+            SvarKnap3.setStyle("-fx-background-color: #FFC00A");
+        }
+
+        if (SvarKnap4.isSelected()) {
+            SvarKnap4.setStyle("-fx-background-color: #a10a22");
+        } else {
+            SvarKnap4.setStyle("-fx-background-color: #FF3355");
+        }
+    }
+
+    public String TrueOrFalse(Boolean value) {
+        String INT = "0";
+
+        if (value) {
+            INT = "1";
+        } else if (!value) {
+            INT = "0";
+        }
+        return INT;
+    }
+
 }

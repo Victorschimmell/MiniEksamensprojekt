@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static String CurrentRoot;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -23,11 +24,8 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml) throws IOException {
+        CurrentRoot = fxml;
         scene.setRoot(loadFXML(fxml));
-    }
-
-    static String getRoot() throws IOException {
-        return scene.getRoot().toString();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

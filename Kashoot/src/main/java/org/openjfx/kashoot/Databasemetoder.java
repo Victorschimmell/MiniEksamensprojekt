@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Databasemetoder {
@@ -26,9 +27,10 @@ public class Databasemetoder {
     public String SvarMValue;
     public static int preInject;
     public static ArrayList<String> rSet = new ArrayList<String>();
-    
 
     public static int spmMængde;
+
+    public static int AlleRigtige;
 
     // public static int ActiveQuizID; kan sættes som kode i fremtiden, kan indsætte
     // i sql kode under displaySvarMuligheder//
@@ -322,9 +324,10 @@ public class Databasemetoder {
         ArrayList<String> alleSpm = new ArrayList<String>();
 
         try {
-            conn= DriverManager.getConnection(connectionString);
+            conn = DriverManager.getConnection(connectionString);
 
-            try (PreparedStatement wasd = conn.prepareStatement("SELECT spørgsmål FROM spørgsmål WHERE ID_Quiz ='"+ PrimaryController.KodeQuiz +"';")) {
+            try (PreparedStatement wasd = conn.prepareStatement(
+                    "SELECT spørgsmål FROM spørgsmål WHERE ID_Quiz ='" + PrimaryController.KodeQuiz + "';")) {
                 rs = wasd.executeQuery();
 
                 while (rs.next()) {
@@ -334,23 +337,21 @@ public class Databasemetoder {
                 }
 
                 spm = alleSpm.get(nr);
+                /* DEBUGGING USE
                 System.out.println("Alle spm: " + alleSpm);
+                */
                 spmMængde = alleSpm.size();
 
-
-            }catch (SQLException e) {
+            } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
 
-            
         } catch (SQLException e) {
             System.out.println("no connection");
         }
 
-
         return spm;
     }
-
 
     public List<String> displaySvarMuligheder() throws SQLException, Exception {
         // ActiveQuizID = 7;//
@@ -367,16 +368,18 @@ public class Databasemetoder {
                             + PrimaryController.KodeQuiz + "';");
 
             rs = ps.executeQuery();
-            
-            try {
-                    while (rs.next()) {
 
-                        
-                        svarMuligheder.add(rs.getString("Svar"));
-                        
-                    }
-                
-                System.out.println("SvarM: " + svarMuligheder);
+            try {
+                while (rs.next()) {
+
+                    svarMuligheder.add(rs.getString("Svar"));
+
+                }
+                /* DEBUGGING USE
+                if (svarMuligheder.size() > 0) {
+                    System.out.println("SvarM: " + svarMuligheder);
+                }
+                */
 
             } catch (Exception e) {
                 System.out.println("DB Error 1" + e.getMessage());
@@ -398,10 +401,15 @@ public class Databasemetoder {
         String sql = null;
         ResultSet rs = null;
 
+        try {
+            rSet.clear();
+        } catch (Exception e) {
+
+        }
+
         // Skab forbindelse til databasen...
         try {
             conn = DriverManager.getConnection(connectionString);
-            System.out.println(PrimaryController.KodeQuiz);
 
             sql = "SELECT Svar_Muligheder.Ksvar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = '"
                     + PrimaryController.KodeQuiz + "';";
@@ -410,19 +418,17 @@ public class Databasemetoder {
                 rs = pstmt.executeQuery();
 
                 while (rs.next()) {
-                    if (rSet.size() >= 4) {
 
-                    } else {
-                        rSet.add(rs.getString(1));
-                    }
-
+                    rSet.add(rs.getString(1));
                 }
+               
+                AlleRigtige = Collections.frequency(rSet, "1");
 
-                System.out.println(rSet);
                 rs.close();
                 pstmt.close();
             } catch (Exception e) {
                 System.out.println("Failure in program");
+
             }
 
         } catch (SQLException e) {
