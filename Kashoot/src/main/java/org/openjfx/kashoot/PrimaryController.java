@@ -25,69 +25,23 @@ import javafx.scene.control.CheckBox;
 public class PrimaryController implements Initializable {
 
     @FXML
-    private TextField txtUsername1;
+    private TextField txtUsername1, txtUsername2, txtLog1Username, txtLog1Password, txtLog2Username, txtLog2Password, SvarmulighedA, SvarmulighedB, SvarmulighedC, SvarmulighedD, quiznavn, IDField;
     @FXML
-    private PasswordField txtPassword1;
+    private PasswordField txtPassword1, txtPassword1Confirm, txtPassword2, txtPassword2Confirm;
     @FXML
-    private PasswordField txtPassword1Confirm;
-    @FXML
-    private TextField txtUsername2;
-    @FXML
-    private PasswordField txtPassword2;
-    @FXML
-    private PasswordField txtPassword2Confirm;
-    @FXML
-    private TextField txtLog1Username;
-    @FXML
-    private TextField txtLog1Password;
-    @FXML
-    private TextField txtLog2Username;
-    @FXML
-    private TextField txtLog2Password;
-    @FXML
-    private ListView<String> OpgaveList;
-    @FXML
-    private ListView<String> SpørgsmålList;
+    private ListView<String> OpgaveList, SpørgsmålList;
     @FXML
     private TextArea IndskrivSpm;
     @FXML
-    private TextField SvarmulighedA;
+    private CheckBox AKorrekt, BKorrekt, CKorrekt, DKorrekt;
+  
     @FXML
-    private TextField SvarmulighedB;
-    @FXML
-    private TextField SvarmulighedC;
-    @FXML
-    private TextField SvarmulighedD;
-    @FXML
-    private TextField quiznavn;
-    @FXML
-    private CheckBox AKorrekt;
-    @FXML
-    private CheckBox BKorrekt;
-    @FXML
-    private CheckBox CKorrekt;
-    @FXML
-    private CheckBox DKorrekt;
-    @FXML
-    private Text UserConfirm;
+    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr;
     @FXML
     private Label verifyLogin;
+
     @FXML
-    private Text QuizIDdis;
-    @FXML
-    private Button SvarKnap1;
-    @FXML
-    private Button SvarKnap2;
-    @FXML
-    private Button SvarKnap3;
-    @FXML
-    private Button SvarKnap4;
-    @FXML
-    private TextField IDField;
-    @FXML
-    private Text SpørgsmålView;
-    @FXML
-    private Text SpmNr;
+    private Button SvarKnap1, SvarKnap2, SvarKnap3, SvarKnap4;
 
     public static String KodeQuiz;
 
