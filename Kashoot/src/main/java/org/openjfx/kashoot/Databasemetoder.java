@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Databasemetoder {
 
-    private final String connectionString = "jdbc:sqlite:Kashoot/src/kashootDB.db";
+    private final String connectionString = "jdbc:sqlite:Kashoot/src/kashootDBny.db";
     public static String cMessage;
     public String verifyLogin;
     public static int pNumber;
@@ -477,5 +477,23 @@ public class Databasemetoder {
 
         }
     }
+    public void insertResultat() throws SQLException, Exception {
+        Connection conn = null;
+        String sql;
 
+        double perC = PrimaryController.point/AlleRigtige*100;
+
+        try {
+            conn = DriverManager.getConnection(connectionString);
+            sql = "INSERT INTO Elev_Svar(ID_Elev, ID_Quiz, KSvarCounter) VALUES('" + CurrentUser + "','" + PrimaryController.KodeQuiz + "','" + PrimaryController.point + "/" + AlleRigtige + " -> " + perC + "%" + "')";
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+
+            } catch (SQLException e) {
+                System.out.println("Blyat" + e);
+            }
+        } catch (SQLException e) {
+            System.out.println("Connection failed: " + e.getMessage());
+        }
+    }
 }

@@ -56,7 +56,7 @@ public class PrimaryController implements Initializable {
 
     private static ArrayList<String> MineSvar = new ArrayList<String>();
 
-    private static int point;
+    public static int point;
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -108,11 +108,7 @@ public class PrimaryController implements Initializable {
                         }
                     }
 
-                    System.out.println(MineSvar);
-                    System.out.println(Databasemetoder.rSet);
-
                     try {
-                        System.out.println(MineSvar.toArray());
                         for (int i = 0; i < Databasemetoder.rSet.size(); i++) {
                             if (MineSvar.get(i).equals(Databasemetoder.rSet.get(i))) {
                                 if (MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("1")) {
@@ -146,6 +142,7 @@ public class PrimaryController implements Initializable {
                 double perC;
                 perC = point * 100 / Databasemetoder.AlleRigtige;
                 xRigtige.setText(point + "/" + Databasemetoder.AlleRigtige + " Rigtige!" + "\n" + perC + "%");
+                DB.insertResultat();
 
             }
 
