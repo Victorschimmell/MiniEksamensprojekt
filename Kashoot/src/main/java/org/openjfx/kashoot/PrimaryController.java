@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -86,7 +85,7 @@ public class PrimaryController implements Initializable {
             SpørgsmålView.setText(DB.displaySpm(NrSpm));
             NrSpm_String = String.valueOf(NrSpm + 1);
 
-            SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
+            SpmNr.setText(NrSpm_String + " / " + Databasemetoder.spmMængde);
 
             DB.korrektSvarCheck();
 
@@ -95,45 +94,58 @@ public class PrimaryController implements Initializable {
         }
 
         try {
-            if(App.CurrentRoot.equals("fourth")){
+            if (App.CurrentRoot.equals("fourth")) {
 
                 point = 0;
+                MineSvar.clear();
 
                 try {
-                    for(int i = 0; i < ValgteSvar.size(); i++){
-                        for(int j = 0; j < ValgteSvar.get(i).length; j++){
-    
-                        MineSvar.add((String) Array.get(ValgteSvar.get(i), j));
-    
-                        }               
+                    for (int i = 0; i < ValgteSvar.size(); i++) {
+                        for (int j = 0; j < ValgteSvar.get(i).length; j++) {
+
+                            MineSvar.add((String) Array.get(ValgteSvar.get(i), j));
+
+                        }
                     }
 
-                    try { 
-                            for( int i = 0; i < Databasemetoder.rSet.size(); i++){
-                                if(MineSvar.get(i).equals(Databasemetoder.rSet.get(i))){ 
+                    try {
+                        System.out.println(MineSvar.toArray());
+                        for (int i = 0; i < Databasemetoder.rSet.size(); i++) {
+                             if (MineSvar.get(i).equals(Databasemetoder.rSet.get(i))) {
+                                if(MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("1")){
+                               
                                 point++;
-                            }
-                            }
-                     } catch (Exception e) {
+                                System.out.println(point);
+                                }
+                            }else{
+                                if(MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("0") || Databasemetoder.rSet.get(i).equals("1") && MineSvar.get(i).equals("0")){
+                               
+                                point--;
+                                System.out.println(point);
+                        } 
+                    }
+    
+                        }
+                    } catch (Exception e) {
                         System.out.println(e.getMessage() + " Problemer med sammenligning");
                     }
-                
 
                 } catch (Exception e) {
                     System.out.println(e.getMessage() + " Problemer med MineSvar");
-                }    
-                System.out.println("Alle Mine Svar: " + point + "/" + Databasemetoder.rSet.size());
-
-                xRigtige.setText(point + "/" + Databasemetoder.rSet.size()+ " Rigtige!");
-                
                 }
 
-        }catch(
+                double perC;
+                perC = point * 100 / Databasemetoder.AlleRigtige;
+                xRigtige.setText(point + "/" + Databasemetoder.AlleRigtige + " Rigtige!" + "\n" + perC + "%");
 
-    Exception e)
-    {
-        System.out.println(e.getMessage() + " Hejsa");
-    }
+            }
+        
+
+        } catch (
+
+        Exception e) {
+            System.out.println(e.getMessage() + " Hejsa");
+        }
 
     }
 
@@ -348,7 +360,6 @@ public class PrimaryController implements Initializable {
 
     }
 
-
     @FXML
     private void handleValgBtn() throws Exception {
         ColorSwitch();
@@ -375,11 +386,12 @@ public class PrimaryController implements Initializable {
                     System.out.println("Arraylist added missing item");
 
                 }
-/* DEBUG USE
-                for (String i[] : ValgteSvar) {
-                    System.out.println(Arrays.toString(i));
-                }
-*/
+                /*
+                 * DEBUG USE
+                 * for (String i[] : ValgteSvar) {
+                 * System.out.println(Arrays.toString(i));
+                 * }
+                 */
                 try {
                     knap1 += 4;
                     knap2 += 4;

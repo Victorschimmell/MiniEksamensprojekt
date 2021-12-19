@@ -30,6 +30,8 @@ public class Databasemetoder {
 
     public static int spmMængde;
 
+    public static int AlleRigtige;
+
     // public static int ActiveQuizID; kan sættes som kode i fremtiden, kan indsætte
     // i sql kode under displaySvarMuligheder//
     public void saveUser(User u) throws SQLException, Exception {
@@ -419,7 +421,8 @@ public class Databasemetoder {
 
                     rSet.add(rs.getString(1));
                 }
-               // alleRigtige = Collections.frequency(rSet, "1");
+               
+                AlleRigtige = Collections.frequency(rSet, "1");
 
                 rs.close();
                 pstmt.close();
