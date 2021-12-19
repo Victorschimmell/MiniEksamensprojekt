@@ -7,20 +7,34 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
-      <Text layoutX="222.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elev Svar" textAlignment="CENTER" wrappingWidth="239.01678466796875">
+      <Text layoutX="33.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elev Svar i:" wrappingWidth="182.01678466796875">
          <font>
             <Font name="Chalkboard SE Light" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="OpretQuiz1" layoutX="272.0" layoutY="178.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="53.0" prefWidth="140.0" text="Se Elevsvar" />
-      <Label layoutX="48.0" layoutY="129.0" prefHeight="40.0" prefWidth="83.0" text="Elever">
+      <Label layoutX="33.0" layoutY="138.0" prefHeight="40.0" prefWidth="83.0" text="Elever : ">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <ListView fx:id="elevList" layoutX="48.0" layoutY="178.0" prefHeight="355.0" prefWidth="200.0" />
-      <ListView fx:id="svarList" layoutX="454.0" layoutY="178.0" prefHeight="355.0" prefWidth="200.0" />
+      <ListView fx:id="elevList" layoutX="31.0" layoutY="178.0" prefHeight="354.0" prefWidth="739.0" />
+      <Text layoutX="31.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuværende QuizResultater:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="31.0" layoutY="552.0" mnemonicParsing="false" onAction="#switchToLærerQuizMenu" text="Tilbage" />
+      <Text fx:id="QuizIDES" layoutX="215.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QuizID" wrappingWidth="182.01678466796875">
+         <font>
+            <Font name="Chalkboard SE Light" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="-29.0" layoutY="250.0" rotate="-32.5" strokeType="OUTSIDE" strokeWidth="0.0" text="DENNE SIDE KOMMER NÆSTE OPDATERING" wrappingWidth="951.0167846679688">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

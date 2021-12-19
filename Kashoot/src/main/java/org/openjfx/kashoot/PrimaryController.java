@@ -38,7 +38,7 @@ public class PrimaryController implements Initializable {
     private CheckBox AKorrekt, BKorrekt, CKorrekt, DKorrekt;
 
     @FXML
-    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr, xRigtige;
+    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr, xRigtige, QuizIDES;
     @FXML
     private Label verifyLogin;
 
@@ -71,10 +71,10 @@ public class PrimaryController implements Initializable {
                 elevList.getItems().add(allElever.get(i));
             }
         } catch (Exception e) {
-        
-            
-            
+         
         }
+
+        
         try {
             updateQuiz();
         } catch (Exception e) {
@@ -244,6 +244,11 @@ public class PrimaryController implements Initializable {
         @FXML
     private void switchToElevSvar() throws IOException {
         App.setRoot("ElevSvar");
+    }
+
+    @FXML
+    private void switchToLærerQuizMenu() throws IOException {
+        App.setRoot("LærerQuizMenu");
     }
     
 

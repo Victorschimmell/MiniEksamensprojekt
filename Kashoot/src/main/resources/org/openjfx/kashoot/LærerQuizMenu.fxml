@@ -7,19 +7,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.kashoot.PrimaryController">
    <children>
       <AnchorPane layoutX="331.0" layoutY="-10.0" prefHeight="614.0" prefWidth="475.0" style="-fx-background-color: #008080#008080;">
          <children>
-            <ListView fx:id="OpgaveList" layoutX="53.0" layoutY="88.0" prefHeight="441.0" prefWidth="373.0" style="-fx-border-color: Black;" />
+            <ListView fx:id="OpgaveList" layoutX="53.0" layoutY="88.0" prefHeight="495.0" prefWidth="373.0" style="-fx-border-color: Black;" />
             <Text fill="WHITE" layoutX="54.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mine nuværende opgaver" textAlignment="CENTER" wrappingWidth="372.61676025390625">
                <font>
                   <Font size="23.0" />
                </font>
             </Text>
-            <Button layoutX="209.0" layoutY="548.0" mnemonicParsing="false" text="Rediger" />
-            <Button layoutX="286.0" layoutY="548.0" mnemonicParsing="false" text="Slet opgave" />
-            <Button layoutX="106.0" layoutY="548.0" mnemonicParsing="false" text="Test opgave" />
          </children>
       </AnchorPane>
       <TextField fx:id="quiznavn" layoutX="37.0" layoutY="144.0" prefHeight="25.0" prefWidth="251.0" promptText="Indskriv quiznavn... og opret ny quiz" style="-fx-border-color: #008080;" />
@@ -33,8 +30,11 @@
          </font>
       </Text>
       <Button fx:id="OpretQuiz1" layoutX="14.0" layoutY="560.0" mnemonicParsing="false" onAction="#switchToThird" prefHeight="19.0" prefWidth="140.0" text="Log ud og gå tilbage" />
-      <Text fill="#00000090" layoutX="57.0" layoutY="296.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Organisationens funktionsbeskrivelser er et godt værktøj både forud for ansættelsen og efter. En funktionsbeskrivelse skal først og fremmest være beskrivende for funktionen, generel i sin form og konkret i sit indhold. Den skal fungere som et aktivt og synligt samarbejds- og udviklingsorienteret værktøj for den der besidder funktionen, dennes leder, HR-afdelingen og øvrige medarbejdere i organisationen, herunder potentielle interne kandidater på kort og lang sigt." wrappingWidth="224.2825469970703" />
-      <Button fx:id="OpretQuiz2" layoutX="91.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchToElevSvar" prefHeight="33.0" prefWidth="144.0" text="Elev Svar">
+      <Text fill="#00000090" layoutX="50.0" layoutY="312.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En quiz er en form for spil eller sindsport, hvor spillere forsøger at besvare spørgsmål korrekt om et bestemt eller forskellige emner. Quizzer kan bruges som en kort vurdering inden for uddannelse og lignende områder for at måle vækst i viden, evner eller færdigheder." textAlignment="JUSTIFY" wrappingWidth="239.01678466796875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Button fx:id="QuizResultater" layoutX="91.0" layoutY="242.0" mnemonicParsing="false" onAction="#switchToElevSvar" prefHeight="33.0" prefWidth="144.0" text="Tjek Resultater">
          <font>
             <Font name="Avenir Book" size="15.0" />
          </font>
