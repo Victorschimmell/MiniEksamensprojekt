@@ -367,7 +367,6 @@ public class Databasemetoder {
                             + PrimaryController.KodeQuiz + "';");
 
             rs = ps.executeQuery();
-            int længde = rs.getRow();
             
             try {
                     while (rs.next()) {
