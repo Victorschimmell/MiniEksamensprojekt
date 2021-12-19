@@ -138,8 +138,7 @@ public class Databasemetoder {
                     System.out.println(e + "\n" + "No Current user");
 
                 } finally {
-                    preparedStatement.close();
-                    rs.close();
+
                     conn.close();
 
                 }
@@ -369,16 +368,15 @@ public class Databasemetoder {
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 rs = pstmt.executeQuery();
 
-                while(rs.next()){
-                    System.out.println(rs.getInt(1));
-                    if(rSet.size() >= 4){
+                while (rs.next()) {
+                    if (rSet.size() >= 4) {
 
-                    } else{
-                    rSet.add(rs.getString(1));
+                    } else {
+                        rSet.add(rs.getString(1));
                     }
 
                 }
-                
+
                 System.out.println(rSet);
                 rs.close();
                 pstmt.close();
@@ -390,8 +388,7 @@ public class Databasemetoder {
             // Skriver fejlhåndtering her
             System.out.println("DB Error: " + e.getMessage());
 
-        }
-        finally{
+        } finally {
             conn.close();
         }
 
