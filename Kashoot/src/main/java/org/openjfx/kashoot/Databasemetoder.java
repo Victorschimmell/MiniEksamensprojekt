@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Databasemetoder {
@@ -26,6 +27,7 @@ public class Databasemetoder {
     public String SvarMValue;
     public static int preInject;
     public static ArrayList<String> rSet = new ArrayList<String>();
+    public static int alleRigtige;
 
     public static int spmMængde;
 
@@ -417,6 +419,10 @@ public class Databasemetoder {
                 }
 
                 System.out.println("rSet:" + rSet);
+
+                alleRigtige = Collections.frequency(rSet, "1");
+
+                System.out.println("Rigtige i alt:" + alleRigtige);
 
                 rs.close();
                 pstmt.close();

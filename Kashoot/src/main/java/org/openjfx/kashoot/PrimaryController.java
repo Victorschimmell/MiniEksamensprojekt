@@ -83,7 +83,7 @@ public class PrimaryController implements Initializable {
             SpørgsmålView.setText(DB.displaySpm(NrSpm));
             NrSpm_String = String.valueOf(NrSpm + 1);
 
-            SpmNr.setText(NrSpm_String);
+            SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
 
             DB.korrektSvarCheck();
 
@@ -405,7 +405,7 @@ public class PrimaryController implements Initializable {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
 
-                    SpmNr.setText(NrSpm_String);
+                    SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
 
                 } catch (Exception e) {
 
@@ -454,7 +454,7 @@ public class PrimaryController implements Initializable {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
 
-                    SpmNr.setText(NrSpm_String);
+                    SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
 
                 } catch (Exception e) {
 
