@@ -52,10 +52,12 @@ public class PrimaryController implements Initializable {
 
     private int knap1 = 0, knap2 = 1, knap3 = 2, knap4 = 3;
 
+    ArrayList<Boolean[]> ValgteSvar = new ArrayList<Boolean[]>();
+
+    ArrayList<Integer[]> VSvar = new ArrayList<Integer[]>();
+
     Databasemetoder DB = new Databasemetoder();
 
-    // PLACEHOLDER FOR SQL KODE
-    // FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -70,6 +72,7 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
 
         }
+
         try {
             showSvarMuligheder();
 
@@ -81,6 +84,8 @@ public class PrimaryController implements Initializable {
             NrSpm_String = String.valueOf(NrSpm + 1);
 
             SpmNr.setText(NrSpm_String);
+
+            DB.korrektSvarCheck();
 
         } catch (Exception e) {
 
@@ -292,7 +297,6 @@ public class PrimaryController implements Initializable {
     private void showSvarMuligheder() throws Exception {
 
         List<String> SvarMList = DB.displaySvarMuligheder();
-        System.out.println(knap1 + " " + knap2 + " " + knap3 + " " + knap4);
         SvarKnap1.setText(SvarMList.get(knap1));
         SvarKnap2.setText(SvarMList.get(knap2));
         SvarKnap3.setText(SvarMList.get(knap3));
@@ -301,78 +305,75 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void handleBtnValg1() throws Exception {
+    private void handleValgBtn1() throws Exception {
 
-        if (SvarKnap1.isSelected()) {
-            SvarKnap1.setStyle("-fx-background-color: #4ca122");
+        ColorSwitch();
 
-            DB.korrektSvarCheck();
+        try {
+
             if (Databasemetoder.rSet.get(knap1).equals("1")) {
                 System.out.println("Korrekt");
+            } else {
+                System.out.println("Forkert");
+            }
+        } catch (Exception e) {
 
+        }
 
+    }
+
+    @FXML
+    private void handleValgBtn2() throws Exception {
+
+        ColorSwitch();
+
+        try {
+
+            if (Databasemetoder.rSet.get(knap2).equals("1")) {
+                System.out.println("Korrekt");
+            } else {
+                System.out.println("Forkert");
+            }
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    @FXML
+    private void handleValgBtn3() throws Exception {
+
+        ColorSwitch();
+
+        try {
+
+            if (Databasemetoder.rSet.get(knap3).equals("1")) {
+                System.out.println("Korrekt");
+            } else {
+                System.out.println("Forkert");
+            }
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    @FXML
+    private void handleValgBtn4() throws Exception {
+
+        ColorSwitch();
+
+        try {
+
+            if (Databasemetoder.rSet.get(knap4).equals("1")) {
+                System.out.println("Korrekt");
 
             } else {
                 System.out.println("Forkert");
             }
-
-        } else {
-            SvarKnap1.setStyle("-fx-background-color: #66BF39");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-
-    }
-
-    @FXML
-    private void handleBtnValg2() throws Exception {
-
-        if (SvarKnap2.isSelected()) {
-            SvarKnap2.setStyle("-fx-background-color: #298acf");
-
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap2).equals("1")) {
-            System.out.println("Korrekt");
-        } else {
-            System.out.println("Forkert");
-        }
-    } else {
-        SvarKnap2.setStyle("-fx-background-color: #45A3E5");
-    }
-
-    }
-
-    @FXML
-    private void handleBtnValg3() throws Exception {
-        
-        if (SvarKnap3.isSelected()) {
-            SvarKnap3.setStyle("-fx-background-color: #e8ae07");
-
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap3).equals("1")) {
-            System.out.println("Korrekt");
-        } else {
-            System.out.println("Forkert");
-        }
-    }else {
-            SvarKnap3.setStyle("-fx-background-color: #FFC00A");
-        }
-
-    }
-
-    @FXML
-    private void handleBtnValg4() throws Exception {
-      
-        if (SvarKnap4.isSelected()) {
-            SvarKnap4.setStyle("-fx-background-color: #a10a22");
-
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap4).equals("1")) {
-            System.out.println("Korrekt");
-        } else {
-            System.out.println("Forkert");
-        }
-    }else {
-        SvarKnap4.setStyle("-fx-background-color: #FF3355");
-    }
 
     }
 
@@ -410,10 +411,20 @@ public class PrimaryController implements Initializable {
 
                 }
 
+            } else if(NrSpm == Databasemetoder.spmMængde - 1){
+                App.setRoot("fourth");
             }
+
         } catch (Exception e) {
 
         }
+
+        SvarKnap1.setSelected(false);
+        SvarKnap2.setSelected(false);
+        SvarKnap3.setSelected(false);
+        SvarKnap4.setSelected(false);
+
+        ColorSwitch();
 
     }
 
@@ -453,6 +464,41 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
 
         }
+        SvarKnap1.setSelected(false);
+        SvarKnap2.setSelected(false);
+        SvarKnap3.setSelected(false);
+        SvarKnap4.setSelected(false);
+
+        ColorSwitch();
 
     }
+
+    @FXML
+    public void ColorSwitch() throws Exception {
+
+        if (SvarKnap1.isSelected()) {
+            SvarKnap1.setStyle("-fx-background-color: #4ca122");
+        } else {
+            SvarKnap1.setStyle("-fx-background-color: #66BF39");
+        }
+
+        if (SvarKnap2.isSelected()) {
+            SvarKnap2.setStyle("-fx-background-color: #298acf");
+        } else {
+            SvarKnap2.setStyle("-fx-background-color: #45A3E5");
+        }
+
+        if (SvarKnap3.isSelected()) {
+            SvarKnap3.setStyle("-fx-background-color: #e8ae07");
+        } else {
+            SvarKnap3.setStyle("-fx-background-color: #FFC00A");
+        }
+
+        if (SvarKnap4.isSelected()) {
+            SvarKnap4.setStyle("-fx-background-color: #a10a22");
+        } else {
+            SvarKnap4.setStyle("-fx-background-color: #FF3355");
+        }
+    }
+
 }
