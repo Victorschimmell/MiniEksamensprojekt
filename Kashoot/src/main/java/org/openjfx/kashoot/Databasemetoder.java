@@ -23,11 +23,18 @@ public class Databasemetoder {
 
     public static int CurrentUser;
 
+<<<<<<< HEAD
     public String SvarMValue;
     public static int preInject;
     public static int KorrektSvar;
 
     //public static int ActiveQuizID; kan sættes som kode i fremtiden, kan indsætte i sql kode under displaySvarMuligheder//
+=======
+    public static int ActiveQuizID;
+
+
+
+>>>>>>> caf665322c62c03b9e7c5e703179d3336756ae70
     public void saveUser(User u) throws SQLException, Exception {
         Connection conn = null;
         Class.forName("org.sqlite.JDBC");
@@ -310,6 +317,7 @@ public class Databasemetoder {
         }
 
     }
+<<<<<<< HEAD
 
     public List<String> displaySvarMuligheder() throws SQLException, Exception {
         //ActiveQuizID = 7;//
@@ -385,4 +393,41 @@ public class Databasemetoder {
             rs.close();
         }
     }
+=======
+
+    public List<String> displaySvarMuligheder() throws SQLException, Exception {
+        //ActiveQuizID = 7;//
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        String s;
+
+        List<String> svarMuligheder = new ArrayList<>();
+
+        try {
+            conn = DriverManager.getConnection(connectionString);
+
+            ps = conn.prepareStatement("SELECT Svar_Muligheder.Svar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID;");
+
+            rs = ps.executeQuery();
+            try {
+                {
+                    while (rs.next()) {
+                        svarMuligheder.add(rs.getString("Svar"));
+                    }
+
+                }
+
+            } catch (Exception e) {
+                System.out.println("DB Error 1" + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("DB Error 1" + e.getMessage());
+        }
+        return svarMuligheder;
+    }
+
+>>>>>>> caf665322c62c03b9e7c5e703179d3336756ae70
 }

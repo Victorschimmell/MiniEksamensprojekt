@@ -95,14 +95,29 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
         }
         try {
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> caf665322c62c03b9e7c5e703179d3336756ae70
             QuizIDdis.setText(String.valueOf(DB.getQuizId()));
 
         } catch (Exception e) {
 
         }
         try {
+<<<<<<< HEAD
             showSvarMuligheder();
+=======
+           DB.displaySvarMuligheder();
+            
+           List<String> Test = DB.displaySvarMuligheder();
+           SvarKnap1.setText(Test.get(0));
+           SvarKnap2.setText(Test.get(1));
+           SvarKnap3.setText(Test.get(2));
+           SvarKnap4.setText(Test.get(3));
+
+>>>>>>> caf665322c62c03b9e7c5e703179d3336756ae70
 
         } catch (Exception e) {
 
@@ -287,6 +302,7 @@ public class PrimaryController implements Initializable {
 
     }
 
+<<<<<<< HEAD
     @FXML
     private void showSvarMuligheder() throws Exception {
         DB.displaySvarMuligheder();
@@ -349,4 +365,6 @@ public class PrimaryController implements Initializable {
         System.out.println(Databasemetoder.bPressedNum);
     }
 
+=======
+>>>>>>> caf665322c62c03b9e7c5e703179d3336756ae70
 }
