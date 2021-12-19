@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Databasemetoder {
 
-    private final String connectionString = "jdbc:sqlite:src/kashootDB.db";
+    private final String connectionString = "jdbc:sqlite:Kashoot/src/kashootDB.db";
     public static String cMessage;
     public String verifyLogin;
     public static int pNumber;
@@ -287,7 +287,7 @@ public class Databasemetoder {
             try {
                 for (int i = 0; i < 4; i++) {
 
-                    sql = "INSERT INTO Svar_Muligheder(ID_Spørgsmål, Svar, Ksvar) VALUES('" + Svar[i].getSpmID() + 1 + "','" + Svar[i].getSvar() + "','" + Svar[i].getsvarK() + "')";
+                    sql = "INSERT INTO Svar_Muligheder(ID_Spørgsmål, Svar, Ksvar) VALUES('" + Svar[i].getSpmID() + "','" + Svar[i].getSvar() + "','" + Svar[i].getsvarK() + "')";
                     try ( PreparedStatement svarst = conn.prepareStatement(sql)) {
                         svarst.executeUpdate();
                         System.out.println("Successfully created a new svar");
@@ -311,7 +311,7 @@ public class Databasemetoder {
 
     }
 
-    public List<String> displaySvarMuligheder() throws SQLException, Exception {
+    public List<String> displaySvarMuligheder(String KodeQuiz) throws SQLException, Exception {
         //ActiveQuizID = 7;//
 
         Connection conn = null;
@@ -323,7 +323,7 @@ public class Databasemetoder {
         try {
             conn = DriverManager.getConnection(connectionString);
 
-            ps = conn.prepareStatement("SELECT Svar_Muligheder.Svar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = 29;");
+            ps = conn.prepareStatement("SELECT Svar_Muligheder.Svar FROM ((Quiz INNER JOIN Spørgsmål ON Spørgsmål.ID_Quiz = Quiz.ID) INNER JOIN Svar_Muligheder ON Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID) WHERE Svar_Muligheder.ID_Spørgsmål = Spørgsmål.ID AND Spørgsmål.ID_Quiz = Quiz.ID AND Quiz.ID = '" + KodeQuiz + "';");
 
             rs = ps.executeQuery();
             try {
@@ -385,4 +385,47 @@ public class Databasemetoder {
             rs.close();
         }
     }
+
+
+    public boolean verifyQuiz(String Quizkode) throws SQLException, Exception {
+
+        Connection conn = null;
+        ResultSet rs = null;
+
+        String query = "SELECT ID FROM Quiz WHERE ID = '" + Quizkode + "'";
+
+
+        // Skab forbindelse til databasen...
+        try {
+            conn = DriverManager.getConnection(connectionString);
+
+                    try ( PreparedStatement pstmt = conn.prepareStatement(query)) {
+                        rs = pstmt.executeQuery();  
+
+                        if(rs.getInt("ID") >= 1){
+                            return true;
+                        }  else{
+                            return false;
+                        }
+
+
+                    } catch (SQLException e) {
+                        System.out.println("No ID" + e.getMessage());
+                        return false;
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Connection failed: " + e.getMessage());
+                    return false;
+                }
+
+                finally{
+                    conn.close();
+                    rs.close();
+
+
+                }
+        }
+
+    
 }

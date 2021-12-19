@@ -29,7 +29,7 @@ public class Svar {
         
     }
     public int getSpmID() {
-        return SpmID;
+        return SpmID+1;
     }
     public String getSvar() {
         return svarMulighed;

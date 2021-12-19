@@ -82,6 +82,10 @@ public class PrimaryController implements Initializable {
     private Button SvarKnap3;
     @FXML
     private Button SvarKnap4;
+    @FXML
+    private TextField IDField;
+
+    private String KodeQuiz;
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -135,7 +139,28 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void switchToSpm() throws IOException {
-        App.setRoot("spmSide");
+
+        if(IDField.getText().isBlank()){
+            System.out.println("Husk at skrive en kode buddy");
+        } else {
+        KodeQuiz = IDField.getText();
+
+            try {
+                
+                if(DB.verifyQuiz(KodeQuiz)){
+                    System.out.println("Åbner quizID: " + KodeQuiz);
+
+                    App.setRoot("spmSide");
+
+                } else{
+
+                    System.out.println("QuizKode findes ikke");
+                }
+                
+            } catch (Exception e) {
+                System.out.println("QuizKode findes ikke");
+            }    
+        }
     }
 
     @FXML
@@ -289,8 +314,8 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void showSvarMuligheder() throws Exception {
-        DB.displaySvarMuligheder();
-        List<String> SvarMList = DB.displaySvarMuligheder();
+        
+        List<String> SvarMList = DB.displaySvarMuligheder(KodeQuiz);
         SvarKnap1.setText(SvarMList.get(0));
         SvarKnap2.setText(SvarMList.get(1));
         SvarKnap3.setText(SvarMList.get(2));
