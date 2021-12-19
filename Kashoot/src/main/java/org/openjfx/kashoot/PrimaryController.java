@@ -1,6 +1,7 @@
 package org.openjfx.kashoot;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -8,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -52,9 +55,11 @@ public class PrimaryController implements Initializable {
 
     private int knap1 = 0, knap2 = 1, knap3 = 2, knap4 = 3;
 
-    ArrayList<Boolean[]> ValgteSvar = new ArrayList<Boolean[]>();
+    private static ArrayList<Integer[]> ValgteSvar = new ArrayList<Integer[]>();
 
-    ArrayList<Integer[]> VSvar = new ArrayList<Integer[]>();
+    private static ArrayList<Integer> MineSvar = new ArrayList<Integer>();
+
+    private static int AlleMineSvar;
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -86,6 +91,29 @@ public class PrimaryController implements Initializable {
             SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
 
             DB.korrektSvarCheck();
+
+        } catch (Exception e) {
+
+        }
+
+        try {
+            if(App.CurrentRoot.equals("fourth")){
+
+                for(int i = 0; i < ValgteSvar.size(); i++){
+                    for(int j = 0; j < ValgteSvar.get(i).length; j++){
+
+                    MineSvar.add((Integer) Array.get(ValgteSvar.get(i), j));
+                    System.out.println((Integer) Array.get(ValgteSvar.get(i), j));
+
+                    }               
+                }
+
+                AlleMineSvar = Collections.frequency(MineSvar, 1);
+
+                System.out.println("Alle Mine Svar: " + AlleMineSvar);
+
+            }
+        
 
         } catch (Exception e) {
 
@@ -380,14 +408,32 @@ public class PrimaryController implements Initializable {
     @FXML
     private void NæsteKnap() throws Exception {
         try {
-            if (NrSpm < Databasemetoder.spmMængde - 1) {
-                NrSpm++;
+           
+            if (NrSpm < Databasemetoder.spmMængde) {
+            
+                try {
+                    ValgteSvar.set(NrSpm,  new Integer[]{TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()), TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected())});
+                    System.out.println("Arraylist Overwritten" );
+                    
+                } catch (Exception e) {
+                    
+                    ValgteSvar.add(NrSpm, new Integer[]{TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()), TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected())});
+                    System.out.println("Arraylist added missing item" );
 
+                }
+
+                for( Integer i[] : ValgteSvar){
+                    System.out.println(Arrays.toString(i));
+                }
+
+               
                 try {
                     knap1 += 4;
                     knap2 += 4;
                     knap3 += 4;
                     knap4 += 4;
+
+                    NrSpm++; 
 
                 } catch (Exception e) {
                     System.out.println(e);
@@ -410,8 +456,11 @@ public class PrimaryController implements Initializable {
                 } catch (Exception e) {
 
                 }
+                if(NrSpm >= Databasemetoder.spmMængde){
+                    App.setRoot("fourth");
+                }
 
-            } else if(NrSpm == Databasemetoder.spmMængde - 1){
+            } else{
                 App.setRoot("fourth");
             }
 
@@ -499,6 +548,17 @@ public class PrimaryController implements Initializable {
         } else {
             SvarKnap4.setStyle("-fx-background-color: #FF3355");
         }
+    }
+
+    public int TrueOrFalse(Boolean value){
+        int INT = 0;
+
+        if(value) {
+            INT = 1;
+        } else if(!value) {
+            INT = 0;
+        }
+        return INT;
     }
 
 }
