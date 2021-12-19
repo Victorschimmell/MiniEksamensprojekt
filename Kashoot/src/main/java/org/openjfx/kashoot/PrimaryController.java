@@ -6,15 +6,16 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
@@ -25,7 +26,8 @@ import javafx.scene.control.CheckBox;
 public class PrimaryController implements Initializable {
 
     @FXML
-    private TextField txtUsername1, txtUsername2, txtLog1Username, txtLog1Password, txtLog2Username, txtLog2Password, SvarmulighedA, SvarmulighedB, SvarmulighedC, SvarmulighedD, quiznavn, IDField;
+    private TextField txtUsername1, txtUsername2, txtLog1Username, txtLog1Password, txtLog2Username, txtLog2Password,
+            SvarmulighedA, SvarmulighedB, SvarmulighedC, SvarmulighedD, quiznavn, IDField;
     @FXML
     private PasswordField txtPassword1, txtPassword1Confirm, txtPassword2, txtPassword2Confirm;
     @FXML
@@ -34,14 +36,14 @@ public class PrimaryController implements Initializable {
     private TextArea IndskrivSpm;
     @FXML
     private CheckBox AKorrekt, BKorrekt, CKorrekt, DKorrekt;
-  
+
     @FXML
     private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr;
     @FXML
     private Label verifyLogin;
 
     @FXML
-    private Button SvarKnap1, SvarKnap2, SvarKnap3, SvarKnap4;
+    private ToggleButton SvarKnap1, SvarKnap2, SvarKnap3, SvarKnap4;
 
     public static String KodeQuiz;
 
@@ -288,8 +290,9 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void showSvarMuligheder() throws Exception {
+
         List<String> SvarMList = DB.displaySvarMuligheder();
-        System.out.println(knap1 + " "+  knap2 + " "+ knap3 + " "+ knap4);
+        System.out.println(knap1 + " " + knap2 + " " + knap3 + " " + knap4);
         SvarKnap1.setText(SvarMList.get(knap1));
         SvarKnap2.setText(SvarMList.get(knap2));
         SvarKnap3.setText(SvarMList.get(knap3));
@@ -299,63 +302,91 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void handleBtnValg1() throws Exception {
-        Databasemetoder.bPressedNum = 1;
-        DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(knap1).equals("1")) {
-            System.out.println("Korrekt");
+
+        if (SvarKnap1.isSelected()) {
+            SvarKnap1.setStyle("-fx-background-color: #4ca122");
+
+            DB.korrektSvarCheck();
+            if (Databasemetoder.rSet.get(knap1).equals("1")) {
+                System.out.println("Korrekt");
+
+
+
+            } else {
+                System.out.println("Forkert");
+            }
+
         } else {
-            System.out.println("Forkert");
+            SvarKnap1.setStyle("-fx-background-color: #66BF39");
         }
 
     }
 
     @FXML
     private void handleBtnValg2() throws Exception {
-        Databasemetoder.bPressedNum = 2;
+
+        if (SvarKnap2.isSelected()) {
+            SvarKnap2.setStyle("-fx-background-color: #298acf");
+
         DB.korrektSvarCheck();
         if (Databasemetoder.rSet.get(knap2).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
+    } else {
+        SvarKnap2.setStyle("-fx-background-color: #45A3E5");
+    }
 
     }
 
     @FXML
     private void handleBtnValg3() throws Exception {
-        Databasemetoder.bPressedNum = 3;
+        
+        if (SvarKnap3.isSelected()) {
+            SvarKnap3.setStyle("-fx-background-color: #e8ae07");
+
         DB.korrektSvarCheck();
         if (Databasemetoder.rSet.get(knap3).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
+    }else {
+            SvarKnap3.setStyle("-fx-background-color: #FFC00A");
+        }
 
     }
 
     @FXML
     private void handleBtnValg4() throws Exception {
-        Databasemetoder.bPressedNum = 4;
+      
+        if (SvarKnap4.isSelected()) {
+            SvarKnap4.setStyle("-fx-background-color: #a10a22");
+
         DB.korrektSvarCheck();
         if (Databasemetoder.rSet.get(knap4).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
+    }else {
+        SvarKnap4.setStyle("-fx-background-color: #FF3355");
+    }
 
     }
 
     @FXML
     private void NæsteKnap() throws Exception {
         try {
-            if (NrSpm < Databasemetoder.spmMængde-1) {
+            if (NrSpm < Databasemetoder.spmMængde - 1) {
                 NrSpm++;
 
                 try {
-                    knap1+=4;
-                    knap2+=4;
-                    knap3+=4;
-                    knap4+=4;
+                    knap1 += 4;
+                    knap2 += 4;
+                    knap3 += 4;
+                    knap4 += 4;
 
                 } catch (Exception e) {
                     System.out.println(e);
@@ -392,11 +423,11 @@ public class PrimaryController implements Initializable {
             if (NrSpm > 0) {
                 NrSpm--;
                 try {
-                    knap1-=4;
-                    knap2-=4;
-                    knap3-=4;
-                    knap4-=4;
-                    
+                    knap1 -= 4;
+                    knap2 -= 4;
+                    knap3 -= 4;
+                    knap4 -= 4;
+
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -404,21 +435,21 @@ public class PrimaryController implements Initializable {
                 System.out.println(NrSpm);
                 try {
                     showSvarMuligheder();
-    
+
                 } catch (Exception e) {
-    
+
                 }
                 try {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
-    
+
                     SpmNr.setText(NrSpm_String);
-    
+
                 } catch (Exception e) {
-    
+
                 }
             }
-            
+
         } catch (Exception e) {
 
         }
