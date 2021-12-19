@@ -7,10 +7,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -19,7 +21,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 
 import javafx.scene.control.CheckBox;
-
 
 public class PrimaryController implements Initializable {
 
@@ -71,15 +72,20 @@ public class PrimaryController implements Initializable {
     private Text UserConfirm;
     @FXML
     private Label verifyLogin;
-    @FXML 
+    @FXML
     private Text QuizIDdis;
-
-
+    @FXML
+    private Button SvarKnap1;
+    @FXML
+    private Button SvarKnap2;
+    @FXML
+    private Button SvarKnap3;
+    @FXML
+    private Button SvarKnap4;
 
     Databasemetoder DB = new Databasemetoder();
 
     // PLACEHOLDER FOR SQL KODE
-
     // FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,12 +95,18 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
         }
         try {
+
             QuizIDdis.setText(String.valueOf(DB.getQuizId()));
 
         } catch (Exception e) {
-           
+
         }
-        
+        try {
+            showSvarMuligheder();
+
+        } catch (Exception e) {
+
+        }
 
     }
 
@@ -239,22 +251,21 @@ public class PrimaryController implements Initializable {
         App.setRoot("lærerQuizMenu");
     }
 
-
     // Andre funktioner i dunno Anders....
     @FXML
     private void IndsætSpm() throws SQLException, Exception {
 
         DB.SaveSpm(new spm(DB.getQuizId(), IndskrivSpm.getText()),
-        new Svar(DB.getSpmId(), SvarmulighedA.getText(), AKorrekt.isSelected()), 
-        new Svar(DB.getSpmId(),SvarmulighedB.getText(), BKorrekt.isSelected()),
-        new Svar(DB.getSpmId(),SvarmulighedC.getText(), CKorrekt.isSelected()),
-        new Svar(DB.getSpmId(),SvarmulighedD.getText(), DKorrekt.isSelected()));
+                new Svar(DB.getSpmId(), SvarmulighedA.getText(), AKorrekt.isSelected()),
+                new Svar(DB.getSpmId(), SvarmulighedB.getText(), BKorrekt.isSelected()),
+                new Svar(DB.getSpmId(), SvarmulighedC.getText(), CKorrekt.isSelected()),
+                new Svar(DB.getSpmId(), SvarmulighedD.getText(), DKorrekt.isSelected()));
 
-        SpørgsmålList.getItems().add("Spørgsmål: " + IndskrivSpm.getText() +
-                ", Svarmulighed A: " + SvarmulighedA.getText() + ":" + AKorrekt.isSelected() +
-                ", Svarmulighed B: " + SvarmulighedB.getText() + ":" + BKorrekt.isSelected() +
-                ", Svarmulighed C: " + SvarmulighedC.getText() + ":" + CKorrekt.isSelected() +
-                ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
+        SpørgsmålList.getItems().add("Spørgsmål: " + IndskrivSpm.getText()
+                + ", Svarmulighed A: " + SvarmulighedA.getText() + ":" + AKorrekt.isSelected()
+                + ", Svarmulighed B: " + SvarmulighedB.getText() + ":" + BKorrekt.isSelected()
+                + ", Svarmulighed C: " + SvarmulighedC.getText() + ":" + CKorrekt.isSelected()
+                + ", Svarmulighed D: " + SvarmulighedD.getText() + ":" + DKorrekt.isSelected());
 
     }
 
@@ -276,5 +287,66 @@ public class PrimaryController implements Initializable {
 
     }
 
+    @FXML
+    private void showSvarMuligheder() throws Exception {
+        DB.displaySvarMuligheder();
+        List<String> SvarMList = DB.displaySvarMuligheder();
+        SvarKnap1.setText(SvarMList.get(0));
+        SvarKnap2.setText(SvarMList.get(1));
+        SvarKnap3.setText(SvarMList.get(2));
+        SvarKnap4.setText(SvarMList.get(3));
+
+    }
+
+    @FXML
+    private void handleBtnValg1() throws Exception {
+        Databasemetoder.bPressedNum = 1;
+        DB.korrektSvarCheck();
+        if (Databasemetoder.KorrektSvar == 1) {
+            System.out.println("Korrekt");
+        } else {
+            System.out.println("Forkert");
+        }
+        System.out.println(Databasemetoder.bPressedNum);
+
+    }
+
+    @FXML
+    private void handleBtnValg2() throws Exception {
+        Databasemetoder.bPressedNum = 2;
+        DB.korrektSvarCheck();
+        if (Databasemetoder.KorrektSvar == 1) {
+            System.out.println("Korrekt");
+        } else {
+            System.out.println("Forkert");
+        }
+
+        System.out.println(Databasemetoder.bPressedNum);
+
+    }
+
+    @FXML
+    private void handleBtnValg3() throws Exception {
+        Databasemetoder.bPressedNum = 3;
+        DB.korrektSvarCheck();
+        if (Databasemetoder.KorrektSvar == 1) {
+            System.out.println("Korrekt");
+        } else {
+            System.out.println("Forkert");
+        }
+        System.out.println(Databasemetoder.bPressedNum);
+    }
+
+    @FXML
+    private void handleBtnValg4() throws Exception {
+        Databasemetoder.bPressedNum = 4;
+        DB.korrektSvarCheck();
+        if (Databasemetoder.KorrektSvar == 1) {
+            System.out.println("Korrekt");
+        } else {
+            System.out.println("Forkert");
+        }
+        System.out.println(Databasemetoder.bPressedNum);
+    }
 
 }
