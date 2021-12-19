@@ -27,7 +27,6 @@ public class Databasemetoder {
     public String SvarMValue;
     public static int preInject;
     public static ArrayList<String> rSet = new ArrayList<String>();
-    public static int alleRigtige;
 
     public static int spmMængde;
 
@@ -336,7 +335,9 @@ public class Databasemetoder {
                 }
 
                 spm = alleSpm.get(nr);
+                /* DEBUGGING USE
                 System.out.println("Alle spm: " + alleSpm);
+                */
                 spmMængde = alleSpm.size();
 
             } catch (SQLException e) {
@@ -372,9 +373,11 @@ public class Databasemetoder {
                     svarMuligheder.add(rs.getString("Svar"));
 
                 }
+                /* DEBUGGING USE
                 if (svarMuligheder.size() > 0) {
                     System.out.println("SvarM: " + svarMuligheder);
                 }
+                */
 
             } catch (Exception e) {
                 System.out.println("DB Error 1" + e.getMessage());
@@ -415,14 +418,8 @@ public class Databasemetoder {
                 while (rs.next()) {
 
                     rSet.add(rs.getString(1));
-
                 }
-
-                System.out.println("rSet:" + rSet);
-
-                alleRigtige = Collections.frequency(rSet, "1");
-
-                System.out.println("Rigtige i alt:" + alleRigtige);
+               // alleRigtige = Collections.frequency(rSet, "1");
 
                 rs.close();
                 pstmt.close();

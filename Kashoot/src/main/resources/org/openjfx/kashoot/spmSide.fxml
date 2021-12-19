@@ -30,9 +30,9 @@
          </font>
       </Text>
       <Button layoutX="694.0" layoutY="31.0" mnemonicParsing="false" onAction="#switchToFourth" text="Afslut test" />
-      <ToggleButton fx:id="SvarKnap1" layoutX="214.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleValgBtn1" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #66BF39;" text="SVARMULIGHED 1" textFill="WHITE" />
-      <ToggleButton fx:id="SvarKnap2" layoutX="411.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleValgBtn2" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #45A3E5;" text="SVARMULIGHED 2" textFill="WHITE" />
-      <ToggleButton fx:id="SvarKnap3" layoutX="214.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleValgBtn3" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #FFC00A;" text="SVARMULIGHED 3" textFill="WHITE" />
-      <ToggleButton fx:id="SvarKnap4" layoutX="411.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleValgBtn4" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #FF3355;" text="SVARMULIGHED 4" textFill="WHITE" />
+      <ToggleButton fx:id="SvarKnap1" layoutX="214.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleValgBtn" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #66BF39;" text="SVARMULIGHED 1" textFill="WHITE" />
+      <ToggleButton fx:id="SvarKnap2" layoutX="411.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleValgBtn" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #45A3E5;" text="SVARMULIGHED 2" textFill="WHITE" />
+      <ToggleButton fx:id="SvarKnap3" layoutX="214.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleValgBtn" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #FFC00A;" text="SVARMULIGHED 3" textFill="WHITE" />
+      <ToggleButton fx:id="SvarKnap4" layoutX="411.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleValgBtn" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #FF3355;" text="SVARMULIGHED 4" textFill="WHITE" />
    </children>
 </AnchorPane>

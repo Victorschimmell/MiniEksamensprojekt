@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -23,7 +22,6 @@ import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
-
 import javafx.scene.control.CheckBox;
 
 public class PrimaryController implements Initializable {
@@ -41,7 +39,7 @@ public class PrimaryController implements Initializable {
     private CheckBox AKorrekt, BKorrekt, CKorrekt, DKorrekt;
 
     @FXML
-    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr;
+    private Text UserConfirm, QuizIDdis, SpørgsmålView, SpmNr, xRigtige;
     @FXML
     private Label verifyLogin;
 
@@ -55,11 +53,11 @@ public class PrimaryController implements Initializable {
 
     private int knap1 = 0, knap2 = 1, knap3 = 2, knap4 = 3;
 
-    private static ArrayList<Integer[]> ValgteSvar = new ArrayList<Integer[]>();
+    private static ArrayList<String[]> ValgteSvar = new ArrayList<String[]>();
 
-    private static ArrayList<Integer> MineSvar = new ArrayList<Integer>();
+    private static ArrayList<String> MineSvar = new ArrayList<String>();
 
-    private static int AlleMineSvar;
+    private static int point;
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -99,25 +97,43 @@ public class PrimaryController implements Initializable {
         try {
             if(App.CurrentRoot.equals("fourth")){
 
-                for(int i = 0; i < ValgteSvar.size(); i++){
-                    for(int j = 0; j < ValgteSvar.get(i).length; j++){
+                point = 0;
 
-                    MineSvar.add((Integer) Array.get(ValgteSvar.get(i), j));
-                    System.out.println((Integer) Array.get(ValgteSvar.get(i), j));
+                try {
+                    for(int i = 0; i < ValgteSvar.size(); i++){
+                        for(int j = 0; j < ValgteSvar.get(i).length; j++){
+    
+                        MineSvar.add((String) Array.get(ValgteSvar.get(i), j));
+    
+                        }               
+                    }
 
-                    }               
+                    try { 
+                            for( int i = 0; i < Databasemetoder.rSet.size(); i++){
+                                if(MineSvar.get(i).equals(Databasemetoder.rSet.get(i))){ 
+                                point++;
+                            }
+                            }
+                     } catch (Exception e) {
+                        System.out.println(e.getMessage() + " Problemer med sammenligning");
+                    }
+                
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage() + " Problemer med MineSvar");
+                }    
+                System.out.println("Alle Mine Svar: " + point + "/" + Databasemetoder.rSet.size());
+
+                xRigtige.setText(point + "/" + Databasemetoder.rSet.size()+ " Rigtige!");
+                
                 }
 
-                AlleMineSvar = Collections.frequency(MineSvar, 1);
+        }catch(
 
-                System.out.println("Alle Mine Svar: " + AlleMineSvar);
-
-            }
-        
-
-        } catch (Exception e) {
-
-        }
+    Exception e)
+    {
+        System.out.println(e.getMessage() + " Hejsa");
+    }
 
     }
 
@@ -332,108 +348,45 @@ public class PrimaryController implements Initializable {
 
     }
 
-    @FXML
-    private void handleValgBtn1() throws Exception {
-
-        ColorSwitch();
-
-        try {
-
-            if (Databasemetoder.rSet.get(knap1).equals("1")) {
-                System.out.println("Korrekt");
-            } else {
-                System.out.println("Forkert");
-            }
-        } catch (Exception e) {
-
-        }
-
-    }
 
     @FXML
-    private void handleValgBtn2() throws Exception {
-
+    private void handleValgBtn() throws Exception {
         ColorSwitch();
-
-        try {
-
-            if (Databasemetoder.rSet.get(knap2).equals("1")) {
-                System.out.println("Korrekt");
-            } else {
-                System.out.println("Forkert");
-            }
-        } catch (Exception e) {
-
-        }
-
-    }
-
-    @FXML
-    private void handleValgBtn3() throws Exception {
-
-        ColorSwitch();
-
-        try {
-
-            if (Databasemetoder.rSet.get(knap3).equals("1")) {
-                System.out.println("Korrekt");
-            } else {
-                System.out.println("Forkert");
-            }
-        } catch (Exception e) {
-
-        }
-
-    }
-
-    @FXML
-    private void handleValgBtn4() throws Exception {
-
-        ColorSwitch();
-
-        try {
-
-            if (Databasemetoder.rSet.get(knap4).equals("1")) {
-                System.out.println("Korrekt");
-
-            } else {
-                System.out.println("Forkert");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
 
     }
 
     @FXML
     private void NæsteKnap() throws Exception {
         try {
-           
+
             if (NrSpm < Databasemetoder.spmMængde) {
-            
+
                 try {
-                    ValgteSvar.set(NrSpm,  new Integer[]{TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()), TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected())});
-                    System.out.println("Arraylist Overwritten" );
-                    
+                    ValgteSvar.set(NrSpm,
+                            new String[] { TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()),
+                                    TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected()) });
+                    System.out.println("Arraylist Overwritten");
+
                 } catch (Exception e) {
-                    
-                    ValgteSvar.add(NrSpm, new Integer[]{TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()), TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected())});
-                    System.out.println("Arraylist added missing item" );
+
+                    ValgteSvar.add(NrSpm,
+                            new String[] { TrueOrFalse(SvarKnap1.isSelected()), TrueOrFalse(SvarKnap2.isSelected()),
+                                    TrueOrFalse(SvarKnap3.isSelected()), TrueOrFalse(SvarKnap4.isSelected()) });
+                    System.out.println("Arraylist added missing item");
 
                 }
-
-                for( Integer i[] : ValgteSvar){
+/* DEBUG USE
+                for (String i[] : ValgteSvar) {
                     System.out.println(Arrays.toString(i));
                 }
-
-               
+*/
                 try {
                     knap1 += 4;
                     knap2 += 4;
                     knap3 += 4;
                     knap4 += 4;
 
-                    NrSpm++; 
+                    NrSpm++;
 
                 } catch (Exception e) {
                     System.out.println(e);
@@ -451,16 +404,16 @@ public class PrimaryController implements Initializable {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
 
-                    SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
+                    SpmNr.setText(NrSpm_String + " / " + Databasemetoder.spmMængde);
 
                 } catch (Exception e) {
 
                 }
-                if(NrSpm >= Databasemetoder.spmMængde){
+                if (NrSpm >= Databasemetoder.spmMængde) {
                     App.setRoot("fourth");
                 }
 
-            } else{
+            } else {
                 App.setRoot("fourth");
             }
 
@@ -503,7 +456,7 @@ public class PrimaryController implements Initializable {
                     SpørgsmålView.setText(DB.displaySpm(NrSpm));
                     NrSpm_String = String.valueOf(NrSpm + 1);
 
-                    SpmNr.setText(NrSpm_String +  " / " + Databasemetoder.spmMængde);
+                    SpmNr.setText(NrSpm_String + " / " + Databasemetoder.spmMængde);
 
                 } catch (Exception e) {
 
@@ -550,13 +503,13 @@ public class PrimaryController implements Initializable {
         }
     }
 
-    public int TrueOrFalse(Boolean value){
-        int INT = 0;
+    public String TrueOrFalse(Boolean value) {
+        String INT = "0";
 
-        if(value) {
-            INT = 1;
-        } else if(!value) {
-            INT = 0;
+        if (value) {
+            INT = "1";
+        } else if (!value) {
+            INT = "0";
         }
         return INT;
     }
