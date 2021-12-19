@@ -85,7 +85,7 @@ public class PrimaryController implements Initializable {
     @FXML
     private TextField IDField;
 
-    private String KodeQuiz;
+    public static String KodeQuiz;
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -314,8 +314,8 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void showSvarMuligheder() throws Exception {
-        
-        List<String> SvarMList = DB.displaySvarMuligheder(KodeQuiz);
+        DB.displaySvarMuligheder();
+        List<String> SvarMList = DB.displaySvarMuligheder();
         SvarKnap1.setText(SvarMList.get(0));
         SvarKnap2.setText(SvarMList.get(1));
         SvarKnap3.setText(SvarMList.get(2));
@@ -327,12 +327,12 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg1() throws Exception {
         Databasemetoder.bPressedNum = 1;
         DB.korrektSvarCheck();
-        if (Databasemetoder.KorrektSvar == 1) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-        System.out.println(Databasemetoder.bPressedNum);
+       
 
     }
 
@@ -340,13 +340,13 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg2() throws Exception {
         Databasemetoder.bPressedNum = 2;
         DB.korrektSvarCheck();
-        if (Databasemetoder.KorrektSvar == 1) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
 
-        System.out.println(Databasemetoder.bPressedNum);
+        
 
     }
 
@@ -354,24 +354,24 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg3() throws Exception {
         Databasemetoder.bPressedNum = 3;
         DB.korrektSvarCheck();
-        if (Databasemetoder.KorrektSvar == 1) {
+        if( Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-        System.out.println(Databasemetoder.bPressedNum);
+       
     }
 
     @FXML
     private void handleBtnValg4() throws Exception {
         Databasemetoder.bPressedNum = 4;
         DB.korrektSvarCheck();
-        if (Databasemetoder.KorrektSvar == 1) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-        System.out.println(Databasemetoder.bPressedNum);
+      
     }
 
 }
