@@ -48,6 +48,8 @@ public class PrimaryController implements Initializable {
     private int NrSpm;
     private String NrSpm_String;
 
+    private int knap1 = 0, knap2 = 1, knap3 = 2, knap4 = 3;
+
     Databasemetoder DB = new Databasemetoder();
 
     // PLACEHOLDER FOR SQL KODE
@@ -287,10 +289,11 @@ public class PrimaryController implements Initializable {
     @FXML
     private void showSvarMuligheder() throws Exception {
         List<String> SvarMList = DB.displaySvarMuligheder();
-        SvarKnap1.setText(SvarMList.get(0));
-        SvarKnap2.setText(SvarMList.get(1));
-        SvarKnap3.setText(SvarMList.get(2));
-        SvarKnap4.setText(SvarMList.get(3));
+        System.out.println(knap1 + " "+  knap2 + " "+ knap3 + " "+ knap4);
+        SvarKnap1.setText(SvarMList.get(knap1));
+        SvarKnap2.setText(SvarMList.get(knap2));
+        SvarKnap3.setText(SvarMList.get(knap3));
+        SvarKnap4.setText(SvarMList.get(knap4));
 
     }
 
@@ -298,7 +301,7 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg1() throws Exception {
         Databasemetoder.bPressedNum = 1;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
+        if (Databasemetoder.rSet.get(knap1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
@@ -310,7 +313,7 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg2() throws Exception {
         Databasemetoder.bPressedNum = 2;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
+        if (Databasemetoder.rSet.get(knap2).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
@@ -322,7 +325,7 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg3() throws Exception {
         Databasemetoder.bPressedNum = 3;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
+        if (Databasemetoder.rSet.get(knap3).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
@@ -334,7 +337,7 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg4() throws Exception {
         Databasemetoder.bPressedNum = 4;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
+        if (Databasemetoder.rSet.get(knap4).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
@@ -347,6 +350,17 @@ public class PrimaryController implements Initializable {
         try {
             if (NrSpm < Databasemetoder.spmMængde-1) {
                 NrSpm++;
+
+                try {
+                    knap1+=4;
+                    knap2+=4;
+                    knap3+=4;
+                    knap4+=4;
+
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+
                 System.out.println(NrSpm);
 
                 try {
@@ -377,6 +391,16 @@ public class PrimaryController implements Initializable {
         try {
             if (NrSpm > 0) {
                 NrSpm--;
+                try {
+                    knap1-=4;
+                    knap2-=4;
+                    knap3-=4;
+                    knap4-=4;
+                    
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+
                 System.out.println(NrSpm);
                 try {
                     showSvarMuligheder();

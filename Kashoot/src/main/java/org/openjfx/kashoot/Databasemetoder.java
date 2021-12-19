@@ -26,6 +26,8 @@ public class Databasemetoder {
     public String SvarMValue;
     public static int preInject;
     public static ArrayList<String> rSet = new ArrayList<String>();
+    
+
     public static int spmMængde;
 
     // public static int ActiveQuizID; kan sættes som kode i fremtiden, kan indsætte
@@ -356,9 +358,7 @@ public class Databasemetoder {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
-
         List<String> svarMuligheder = new ArrayList<>();
-
         try {
             conn = DriverManager.getConnection(connectionString);
 
@@ -367,9 +367,14 @@ public class Databasemetoder {
                             + PrimaryController.KodeQuiz + "';");
 
             rs = ps.executeQuery();
+            int længde = rs.getRow();
+            
             try {
                     while (rs.next()) {
+
+                        
                         svarMuligheder.add(rs.getString("Svar"));
+                        
                     }
                 
                 System.out.println("SvarM: " + svarMuligheder);
