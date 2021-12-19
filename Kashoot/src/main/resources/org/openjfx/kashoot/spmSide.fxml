@@ -25,8 +25,8 @@
       <Button fx:id="SvarKnap2" layoutX="411.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleBtnValg2" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #45A3E5;" text="SVARMULIGHED 2" textFill="WHITE" />
       <Button fx:id="SvarKnap3" layoutX="214.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleBtnValg3" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #FFC00A;" text="SVARMULIGHED 3" textFill="WHITE" />
       <Button fx:id="SvarKnap4" layoutX="411.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleBtnValg4" prefHeight="75.0" prefWidth="175.0" style="-fx-background-color: #FF3355;" text="SVARMULIGHED 4" textFill="WHITE" />
-      <Button fx:id="ForrigeKnap" layoutX="335.0" layoutY="529.0" mnemonicParsing="false" text="Forrige" />
-      <Button fx:id="NæsteKnap" layoutX="411.0" layoutY="529.0" mnemonicParsing="false" text="Næste" />
+      <Button fx:id="ForrigeKnap" layoutX="335.0" layoutY="529.0" mnemonicParsing="false" text="Forrige" onAction="#ForrigeKnap"/>
+      <Button fx:id="NæsteKnap" layoutX="411.0" layoutY="529.0" mnemonicParsing="false" text="Næste" onAction="#NæsteKnap"/>
       <Text fx:id="SpørgsmålView" layoutX="217.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hvilken matematik ligger bag lineær regression?" wrappingWidth="366.51904296875">
          <font>
             <Font size="15.0" />

@@ -84,8 +84,15 @@ public class PrimaryController implements Initializable {
     private Button SvarKnap4;
     @FXML
     private TextField IDField;
+    @FXML
+    private Text SpørgsmålView;
+    @FXML
+    private Text SpmNr;
 
     public static String KodeQuiz;
+
+    private int NrSpm;
+    private String NrSpm_String;
 
     Databasemetoder DB = new Databasemetoder();
 
@@ -107,6 +114,15 @@ public class PrimaryController implements Initializable {
         }
         try {
             showSvarMuligheder();
+
+        } catch (Exception e) {
+
+        }
+        try {
+            SpørgsmålView.setText(DB.displaySpm(NrSpm));
+            NrSpm_String = String.valueOf(NrSpm + 1);
+
+            SpmNr.setText(NrSpm_String);
 
         } catch (Exception e) {
 
@@ -140,26 +156,28 @@ public class PrimaryController implements Initializable {
     @FXML
     private void switchToSpm() throws IOException {
 
-        if(IDField.getText().isBlank()){
+        if (IDField.getText().isBlank()) {
             System.out.println("Husk at skrive en kode buddy");
         } else {
-        KodeQuiz = IDField.getText();
+            KodeQuiz = IDField.getText();
 
             try {
-                
-                if(DB.verifyQuiz(KodeQuiz)){
+
+                if (DB.verifyQuiz(KodeQuiz)) {
                     System.out.println("Åbner quizID: " + KodeQuiz);
+
+                    NrSpm = 0;
 
                     App.setRoot("spmSide");
 
-                } else{
+                } else {
 
                     System.out.println("QuizKode findes ikke");
                 }
-                
+
             } catch (Exception e) {
                 System.out.println("QuizKode findes ikke");
-            }    
+            }
         }
     }
 
@@ -314,7 +332,6 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void showSvarMuligheder() throws Exception {
-        DB.displaySvarMuligheder();
         List<String> SvarMList = DB.displaySvarMuligheder();
         SvarKnap1.setText(SvarMList.get(0));
         SvarKnap2.setText(SvarMList.get(1));
@@ -327,12 +344,11 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg1() throws Exception {
         Databasemetoder.bPressedNum = 1;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-       
 
     }
 
@@ -340,13 +356,11 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg2() throws Exception {
         Databasemetoder.bPressedNum = 2;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-
-        
 
     }
 
@@ -354,24 +368,82 @@ public class PrimaryController implements Initializable {
     private void handleBtnValg3() throws Exception {
         Databasemetoder.bPressedNum = 3;
         DB.korrektSvarCheck();
-        if( Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-       
+
     }
 
     @FXML
     private void handleBtnValg4() throws Exception {
         Databasemetoder.bPressedNum = 4;
         DB.korrektSvarCheck();
-        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum-1).equals("1")) {
+        if (Databasemetoder.rSet.get(Databasemetoder.bPressedNum - 1).equals("1")) {
             System.out.println("Korrekt");
         } else {
             System.out.println("Forkert");
         }
-      
+
     }
 
+    @FXML
+    private void NæsteKnap() throws Exception {
+        try {
+            if (NrSpm < Databasemetoder.spmMængde-1) {
+                NrSpm++;
+                System.out.println(NrSpm);
+
+                try {
+                    showSvarMuligheder();
+
+                } catch (Exception e) {
+
+                }
+                try {
+                    SpørgsmålView.setText(DB.displaySpm(NrSpm));
+                    NrSpm_String = String.valueOf(NrSpm + 1);
+
+                    SpmNr.setText(NrSpm_String);
+
+                } catch (Exception e) {
+
+                }
+
+            }
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    @FXML
+    private void ForrigeKnap() throws Exception {
+        try {
+            if (NrSpm > 0) {
+                NrSpm--;
+                System.out.println(NrSpm);
+                try {
+                    showSvarMuligheder();
+    
+                } catch (Exception e) {
+    
+                }
+                try {
+                    SpørgsmålView.setText(DB.displaySpm(NrSpm));
+                    NrSpm_String = String.valueOf(NrSpm + 1);
+    
+                    SpmNr.setText(NrSpm_String);
+    
+                } catch (Exception e) {
+    
+                }
+            }
+            
+        } catch (Exception e) {
+
+        }
+
+    }
 }

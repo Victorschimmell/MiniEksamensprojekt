@@ -26,6 +26,7 @@ public class Databasemetoder {
     public String SvarMValue;
     public static int preInject;
     public static ArrayList<String> rSet = new ArrayList<String>();
+    public static int spmMængde;
 
     // public static int ActiveQuizID; kan sættes som kode i fremtiden, kan indsætte
     // i sql kode under displaySvarMuligheder//
@@ -312,6 +313,43 @@ public class Databasemetoder {
 
     }
 
+    public String displaySpm(int nr) throws SQLException, Exception {
+        Connection conn = null;
+        ResultSet rs = null;
+        String spm = null;
+        ArrayList<String> alleSpm = new ArrayList<String>();
+
+        try {
+            conn= DriverManager.getConnection(connectionString);
+
+            try (PreparedStatement wasd = conn.prepareStatement("SELECT spørgsmål FROM spørgsmål WHERE ID_Quiz ='"+ PrimaryController.KodeQuiz +"';")) {
+                rs = wasd.executeQuery();
+
+                while (rs.next()) {
+
+                    alleSpm.add(rs.getString(1));
+
+                }
+
+                spm = alleSpm.get(nr);
+                System.out.println("Alle spm: " + alleSpm);
+                spmMængde = alleSpm.size();
+
+
+            }catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
+            
+        } catch (SQLException e) {
+            System.out.println("no connection");
+        }
+
+
+        return spm;
+    }
+
+
     public List<String> displaySvarMuligheder() throws SQLException, Exception {
         // ActiveQuizID = 7;//
 
@@ -330,12 +368,11 @@ public class Databasemetoder {
 
             rs = ps.executeQuery();
             try {
-                {
                     while (rs.next()) {
                         svarMuligheder.add(rs.getString("Svar"));
                     }
-
-                }
+                
+                System.out.println("SvarM: " + svarMuligheder);
 
             } catch (Exception e) {
                 System.out.println("DB Error 1" + e.getMessage());
