@@ -108,23 +108,32 @@ public class PrimaryController implements Initializable {
                         }
                     }
 
+                    System.out.println(MineSvar);
+                    System.out.println(Databasemetoder.rSet);
+
                     try {
                         System.out.println(MineSvar.toArray());
                         for (int i = 0; i < Databasemetoder.rSet.size(); i++) {
-                             if (MineSvar.get(i).equals(Databasemetoder.rSet.get(i))) {
-                                if(MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("1")){
-                               
-                                point++;
-                                System.out.println(point);
+                            if (MineSvar.get(i).equals(Databasemetoder.rSet.get(i))) {
+                                if (MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("1")) {
+
+                                    point++;
+                                    System.out.println(point);
                                 }
-                            }else{
-                                if(MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("0") || Databasemetoder.rSet.get(i).equals("1") && MineSvar.get(i).equals("0")){
-                               
-                                point--;
-                                System.out.println(point);
-                        } 
-                    }
-    
+                            } else {
+                                if (MineSvar.get(i).equals("1") && Databasemetoder.rSet.get(i).equals("0")
+                                        || Databasemetoder.rSet.get(i).equals("1") && MineSvar.get(i).equals("0")) {
+
+                                    if (point == 0) {
+
+                                    } else {
+                                        point--;
+                                    }
+
+                                    System.out.println(point);
+                                }
+                            }
+
                         }
                     } catch (Exception e) {
                         System.out.println(e.getMessage() + " Problemer med sammenligning");
@@ -139,7 +148,6 @@ public class PrimaryController implements Initializable {
                 xRigtige.setText(point + "/" + Databasemetoder.AlleRigtige + " Rigtige!" + "\n" + perC + "%");
 
             }
-        
 
         } catch (
 
