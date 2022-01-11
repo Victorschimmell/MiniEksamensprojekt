@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Databasemetoder {
 
-    private final String connectionString = "jdbc:sqlite:Kashoot/src/kashootDBny.db";
+    private final String connectionString = "jdbc:sqlite:src/kashootDBny.db";
     public static String cMessage;
     public String verifyLogin;
     public static int pNumber;
